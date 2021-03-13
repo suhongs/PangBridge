@@ -742,11 +742,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &940548519 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1003029219740653337, guid: 17fda8a01f5144d4a9d79867caf6e1c4, type: 3}
-  m_PrefabInstance: {fileID: 1003029220142954174}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -990,7 +985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c35959a332824c24bb0f69c94e1fe0c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpringCylinder: {fileID: 940548519}
+  SelectedItem: {fileID: 0}
 --- !u!4 &1333594671
 Transform:
   m_ObjectHideFlags: 0

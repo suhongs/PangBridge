@@ -1,17 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UI_Btns : MonoBehaviour
 {
     public GameObject ToolContainer=null;
     public GameObject Player;
-    public Transform ResetPoint;
+    public GameManager gm;
+    public GameObject SettingContainer;
 
     private void Start()
     {
         Player = GameObject.Find("Player");
-        ResetPoint = GameObject.Find("ResetPoint").transform;
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     public void ToggleToolBtn()
@@ -20,6 +22,15 @@ public class UI_Btns : MonoBehaviour
     }
     public void ResetBtn()
     {
-        Player.transform.position = ResetPoint.position;
+        Player.transform.position = gm.ResetPoint.position;
+        gm.CurrentCoin.text = gm.StartCoin.ToString();
+    }
+    public void OpenSetting()
+    {
+        SettingContainer.SetActive(true);
+    }
+    public void CloseSetting()
+    {
+        SettingContainer.SetActive(false);
     }
 }

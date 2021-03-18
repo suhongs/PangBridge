@@ -7,7 +7,8 @@ public class Tools : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
 {
     public GameObject tool = null;
     Vector3 screenToWorldPosition;
-
+    public int cost; //도구의 가격
+    public GameManager gm;
     public void OnBeginDrag(PointerEventData eventData)
     {
         Debug.Log("begin drag");
@@ -25,6 +26,7 @@ public class Tools : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHan
     {
         screenToWorldPosition = Camera.main.ScreenToWorldPoint(eventData.position);
         tool.transform.position = screenToWorldPosition;
+        gm.CurrentCoin.text = (System.Convert.ToInt32(gm.CurrentCoin.text) - cost).ToString(); //마우스를 뗐을 때 cost만큼 현재 코인에서 차감
         Debug.Log("end drag");
     }
 }

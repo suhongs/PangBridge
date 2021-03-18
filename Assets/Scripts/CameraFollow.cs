@@ -36,8 +36,17 @@ public class CameraFollow : MonoBehaviour
     private void Update()
     {
         Zoom();
+        CameraMove();
     }
-
+    void CameraMove()
+    {
+        if (Input.GetMouseButton(1))
+        {
+            float posX = Input.GetAxis("Mouse X");
+            float posY = Input.GetAxis("Mouse Y");
+            transform.position += new Vector3(posX, 0, posY);
+        }
+    }
     void LateUpdate()
     {
         Vector3 newPos = target.position + offset;

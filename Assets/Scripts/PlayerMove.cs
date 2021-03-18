@@ -18,5 +18,6 @@ public class PlayerMove : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
         rigid.velocity = new Vector3(moveHorizontal * moveSpeed, rigid.velocity.y, moveVertical * moveSpeed);
+
     }
 }

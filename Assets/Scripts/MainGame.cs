@@ -7,7 +7,7 @@ public class MainGame : MonoBehaviour
     Rigidbody rb;
     Vector3 initPos;
     GameObject player;
-    public GameObject pauseBtn, startBtn;
+    public GameObject startBtn; //,pauseBtn;
     public GameObject NewItem;
     bool isStarted = false;
 
@@ -16,7 +16,7 @@ public class MainGame : MonoBehaviour
         player = GameObject.Find("Player");
         rb = player.GetComponent<Rigidbody>();
         initPos = player.transform.position;
-        pauseBtn.SetActive(false);
+        //pauseBtn.SetActive(false);
     }
 
     public void StartBtn()
@@ -37,7 +37,7 @@ public class MainGame : MonoBehaviour
         {
             rb.useGravity = true;
             startBtn.SetActive(false);
-            pauseBtn.SetActive(true);
+            //pauseBtn.SetActive(true);
         }
         else
         {
@@ -45,7 +45,7 @@ public class MainGame : MonoBehaviour
             rb.useGravity = false;
             player.transform.position = initPos;
             startBtn.SetActive(true);
-            pauseBtn.SetActive(false);
+            //pauseBtn.SetActive(false);
         }
     }
 

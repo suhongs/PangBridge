@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Tool
   - Obstacle
+  - Star
   layers:
   - Default
   - TransparentFX

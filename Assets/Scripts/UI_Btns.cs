@@ -23,6 +23,7 @@ public class UI_Btns : MonoBehaviour
     public void ResetBtn()
     {
         Player.transform.position = gm.ResetPoint.position;
+        Player.GetComponent<Player>().Setinitialize();
         gm.CurrentCoin.text = gm.StartCoin.ToString();
     }
     public void OpenSetting()

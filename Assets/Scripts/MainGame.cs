@@ -7,7 +7,7 @@ public class MainGame : MonoBehaviour
     Rigidbody rb;
     Vector3 initPos;
     GameObject player;
-    public GameObject startBtn; //,pauseBtn;
+    public GameObject startBtn;//, pauseBtn;
     public GameObject NewItem;
     bool isStarted = false;
 

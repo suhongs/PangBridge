@@ -7,7 +7,7 @@ public class Tool_Canvas : MonoBehaviour
 {
     public GameObject Tool = null; 
     public GameObject ArrowContainer=null; // 이동화살표 컨테이너
-
+    public GameObject RotateContainer = null;
 
     public void MoveBtnClick()
     {
@@ -15,7 +15,7 @@ public class Tool_Canvas : MonoBehaviour
     }
     public void RotateBtnClick()
     {
-
+        RotateContainer.SetActive(true);
     }
     public void SellBtnClick()
     {

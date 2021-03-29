@@ -5,30 +5,19 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    public int score = 0;
+    public int score = 1;
     public Text scoreText;
 
     //initialize 부분, 별도 스크립트 혹은 함수로 옮기는 것을 고려
     public GameObject[] stars;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Star"))
         {
             Destroy(other.gameObject);
-            score = score + 1;
+            score++;
             scoreText.text = "<color=#ffffff>" + score + "/3 </color>";
         }
     }

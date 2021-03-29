@@ -11,11 +11,11 @@ public class ToolsHandler : MonoBehaviour
     GameObject prefab = null;
     bool btnClicked = false;
     private Vector3 mousePos;
-
+    GameManager gm = null;
     // Start is called before the first frame update
     void Start()
     {
-        
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -72,6 +72,7 @@ public class ToolsHandler : MonoBehaviour
             prefab = Resources.Load("Prefab/" + curTool) as GameObject;
             tool = MonoBehaviour.Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
             tool.tag = "Tool";
+            gm.CurrentCoin.text = (int.Parse(gm.CurrentCoin.text)-1).ToString();
             // 리셋 버튼 누르면 태그가 Tool인 오브젝트 없애고 돈 환불처리 시키기
         }
     }

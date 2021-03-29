@@ -25,4 +25,9 @@ public class DragObject : MonoBehaviour
     {
         transform.position = GetMouseWorldPos() + mOffset;
     }
+
+    void OnMouseUp()
+    {
+        Debug.Log("sadg");
+    }
 }

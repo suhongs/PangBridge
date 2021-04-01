@@ -40,12 +40,14 @@ public class UI_Btns : MonoBehaviour
         Player.GetComponent<SphereCollider>().enabled = false; //플레이어 collider 끔
         StartButton.SetActive(true); //start button 제거
     }
-    public void OpenSetting()
+
+    public void SellBtn()
     {
-        SettingContainer.SetActive(true);
+        Destroy(gm.SelectedTool.gameObject);
+        gm.CurrentCoin.text = (int.Parse(gm.CurrentCoin.text) + 1).ToString(); //+1자리에 각 도구 가격 넣으면 될 듯
     }
-    public void CloseSetting()
+    public void RotateBtn()
     {
-        SettingContainer.SetActive(false);
+
     }
 }

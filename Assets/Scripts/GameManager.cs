@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class GameManager : MonoBehaviour
     public Text CurrentStar = null; //현재 별 수
 
     public GameObject[] stars; //별들을 담을 배열
+
+    public GameObject SelectedTool = null; //클릭으로 선택한 도구
     // Start is called before the first frame update
     void Start()
     {
@@ -37,5 +40,28 @@ public class GameManager : MonoBehaviour
 
         CurrentStar.text = "0";
     }
+    private void OnMouseDown()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            if (EventSystem.current.IsPointerOverGameObject() == false) //클릭한게 오브젝트가 아닌 ui일때
+            {
+                ResetAllSelect();
+            }
+        }
+    }
 
+    public void ResetAllSelect() //바탕 클릭 이벤트
+    {
+        SelectedTool = null;
+        GameObject ToolUI = GameObject.Find("MainCanvas").transform.GetChild(8).gameObject;
+        ToolUI.SetActive(false);
+
+        GameObject[] tools = GameObject.FindGameObjectsWithTag("Tool"); //Tool태그의 오브젝트 검색 후 배열에 담음
+
+        for (int i = 0; i < tools.Length; i++)
+        {
+            tools[i].GetComponent<MeshRenderer>().material.color = tools[i].GetComponent<DragObject>().StartColor; //모든 도구 색 초기화
+        }
+    }
 }

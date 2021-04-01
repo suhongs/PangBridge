@@ -5,24 +5,41 @@ using UnityEngine.UI;
 
 public class Tool_Canvas : MonoBehaviour
 {
-    public GameObject Tool = null; 
-    public GameObject ArrowContainer=null; // 이동화살표 컨테이너
-    public GameObject RotateContainer = null;
-
-    public void MoveBtnClick()
+    public GameObject Tool = null;
+    GameManager gm;
+    private float RotateSpeed = 3f;
+    bool isRotate = false;
+    private void Start()
     {
-        ArrowContainer.SetActive(true);
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
-    public void RotateBtnClick()
+
+    private void OnMouseDown()
     {
-        RotateContainer.SetActive(true);
+        isRotate = true;
+    }
+
+    private void OnMouseDrag()
+    {
+        if(isRotate)
+        {
+            Debug.Log("drag");
+            Tool.transform.Rotate(0f, -Input.GetAxis("Mouse X") * RotateSpeed, 0f, Space.World);
+            Tool.transform.Rotate(-Input.GetAxis("Mouse Y") * RotateSpeed, 0f, 0f);
+        }
+    }
+    private void OnMouseUp()
+    {
+        isRotate = false;
+    }
+
+    public void RotateObject() //회전버튼 클릭 후 도구 회전시킬 스크립트
+    {
+        isRotate = true;
     }
     public void SellBtnClick()
     {
-
-    }
-    public void CopyBtnClick()
-    {
-
+        Destroy(Tool);
+        gm.CurrentCoin.text = (int.Parse(gm.CurrentCoin.text) + 1).ToString();
     }
 }

@@ -5,20 +5,23 @@ using UnityEngine.UI;
 
 public class UI_Btns : MonoBehaviour
 {
-    public GameObject ToolContainer=null;
     public GameObject Player;
     public GameManager gm;
     public GameObject SettingContainer;
-
+    public GameObject StartButton = null;
+    private Rigidbody rb;
     private void Start()
     {
         Player = GameObject.Find("Player");
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        rb = Player.GetComponent<Rigidbody>();
     }
 
-    public void ToggleToolBtn()
+    public void StartBtn()
     {
-        ToolContainer.SetActive(!ToolContainer.activeSelf);
+        rb.useGravity = true;
+        Player.GetComponent<SphereCollider>().enabled = true;
+        StartButton.SetActive(false);
     }
     public void ResetBtn()
     {
@@ -29,9 +32,13 @@ public class UI_Btns : MonoBehaviour
             Destroy(tools[i]); //Tool들 제거
         }
 
-        Player.transform.position = gm.ResetPoint.position;
-        Player.GetComponent<Player>().Setinitialize();
-        gm.CurrentCoin.text = gm.StartCoin.ToString();
+        Player.transform.position = gm.ResetPoint.position; //플레이어를 reset point로 이동
+        gm.InitializeStar();
+        gm.CurrentCoin.text = gm.StartCoin.ToString(); //코인 초기화
+        rb.useGravity = false; //플레이어 중력작용x
+        rb.velocity = Vector3.zero; //플레이어에게 받던 힘x
+        Player.GetComponent<SphereCollider>().enabled = false; //플레이어 collider 끔
+        StartButton.SetActive(true); //start button 제거
     }
     public void OpenSetting()
     {

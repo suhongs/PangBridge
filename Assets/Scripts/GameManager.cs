@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     public void ResetAllSelect() //바탕 클릭 이벤트
     {
         SelectedTool = null;
-        GameObject ToolUI = GameObject.Find("MainCanvas").transform.GetChild(8).gameObject;
+        GameObject ToolUI = GameObject.Find("MainCanvas").transform.GetChild(7).gameObject;
         ToolUI.SetActive(false);
 
         GameObject[] tools = GameObject.FindGameObjectsWithTag("Tool"); //Tool태그의 오브젝트 검색 후 배열에 담음

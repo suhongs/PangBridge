@@ -13,7 +13,7 @@ public class DragObject : MonoBehaviour
     private void Start()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        ToolUI = GameObject.Find("MainCanvas").transform.GetChild(8).gameObject;
+        ToolUI = GameObject.Find("MainCanvas").transform.GetChild(7).gameObject;
         StartColor = gameObject.GetComponent<MeshRenderer>().material.color;
     }
 

@@ -33,7 +33,8 @@ public class ToolsHandler : MonoBehaviour
             if (tool != null)
             {
                 // 버튼 클릭하면 해당 오브젝트가 마우스 따라 다님
-                tool.transform.position = mousePos;
+                //tool.transform.position = mousePos;
+                tool.transform.position = new Vector3(mousePos.x, mousePos.y, 0f);
             }
 
 
@@ -67,7 +68,7 @@ public class ToolsHandler : MonoBehaviour
         {
             btnClicked = true;
             curTool = tempBtn.name;
-            Debug.Log(curTool);
+            //Debug.Log(curTool);
             // 버튼 이름으로 프리팹 불러옴
             prefab = Resources.Load("Prefab/" + curTool) as GameObject;
             tool = MonoBehaviour.Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;

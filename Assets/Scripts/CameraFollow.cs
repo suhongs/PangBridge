@@ -45,7 +45,7 @@ public class CameraFollow : MonoBehaviour
             float posX = Input.GetAxis("Mouse X");
             float posY = Input.GetAxis("Mouse Y");
             //transform.position += new Vector3(posX, 0, posY);
-            transform.position += new Vector3(posX, posY, 0);
+            transform.position += new Vector3(-posX, -posY, 0);
         }
     }
     void LateUpdate()

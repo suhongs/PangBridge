@@ -49,6 +49,6 @@ public class UI_Btns : MonoBehaviour
     }
     public void RotateBtn()
     {
-
+        gm.GetComponent<GameManager>().rotateMode = true;
     }
 }

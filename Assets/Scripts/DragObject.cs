@@ -32,7 +32,7 @@ public class DragObject : MonoBehaviour
         gm.SelectedTool = gameObject;
     }
 
-    private Vector3 GetMouseWorldPos()
+    public Vector3 GetMouseWorldPos()
     {
         Vector3 mousePoint = Input.mousePosition;
         mousePoint.z = mZCoord;
@@ -40,10 +40,10 @@ public class DragObject : MonoBehaviour
         return Camera.main.ScreenToWorldPoint(mousePoint);
     }
 
-    void OnMouseDrag()
+    public void OnMouseDrag()
     {
-        //transform.position = GetMouseWorldPos() + mOffset;
-        transform.position = new Vector3(GetMouseWorldPos().x + mOffset.x , GetMouseWorldPos().y + mOffset.y, 0f);
+        transform.position = new Vector3(GetMouseWorldPos().x + mOffset.x, GetMouseWorldPos().y + mOffset.y, 0f);
+
     }
 
 }

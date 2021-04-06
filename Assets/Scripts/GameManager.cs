@@ -17,8 +17,14 @@ public class GameManager : MonoBehaviour
     public GameObject[] stars; //별들을 담을 배열
 
     public GameObject SelectedTool = null; //클릭으로 선택한 도구
-    // Start is called before the first frame update
-    void Start()
+
+    public bool rotateMode = false;         // 회전 모드
+
+    private Vector3 mouseDownPoint;
+    private Vector3 MouseUpPoint;
+    private Vector3 prevPoint;
+// Start is called before the first frame update
+void Start()
     {
         CurrentCoin.text = StartCoin.ToString();
         StartStar.text = "/ " + MaxStar.ToString();
@@ -42,17 +48,42 @@ public class GameManager : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        if (Input.GetMouseButton(0))
+        mouseDownPoint = Input.mousePosition;
+        prevPoint = mouseDownPoint;
+    }
+
+    private void OnMouseDrag()
+    {
+        float mZCoord;
+
+        if (rotateMode)
         {
-            if (EventSystem.current.IsPointerOverGameObject() == false) //클릭한게 오브젝트가 아닌 ui일때
-            {
-                ResetAllSelect();
-            }
+            mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
+            Vector3 mousePoint = Input.mousePosition;
+            mousePoint.z = mZCoord;
+
+            Vector3 dir = Camera.main.ScreenToWorldPoint(mousePoint) - SelectedTool.transform.position;
+
+            float angle = Vector3.Angle(new Vector3(dir.x, dir.y, 0), new Vector3(1, 0, 0));
+
+            if ((dir.x > 0&& dir.y <0) || dir.x < 0 && dir.y <0)
+                    angle = -angle;
+            SelectedTool.transform.localRotation = Quaternion.Euler(0f, 0f, angle);
+        }
+    }
+
+    private void OnMouseUp()
+    {
+        MouseUpPoint = Input.mousePosition;
+        if (EventSystem.current.IsPointerOverGameObject() == false && mouseDownPoint == MouseUpPoint) //클릭한게 오브젝트가 아닌 ui일때
+        {
+            ResetAllSelect();
         }
     }
 
     public void ResetAllSelect() //바탕 클릭 이벤트
     {
+        rotateMode = false;
         SelectedTool = null;
         GameObject ToolUI = GameObject.Find("MainCanvas").transform.GetChild(7).gameObject;
         ToolUI.SetActive(false);
@@ -63,5 +94,8 @@ public class GameManager : MonoBehaviour
         {
             tools[i].GetComponent<MeshRenderer>().material.color = tools[i].GetComponent<DragObject>().StartColor; //모든 도구 색 초기화
         }
+        
     }
+
+
 }

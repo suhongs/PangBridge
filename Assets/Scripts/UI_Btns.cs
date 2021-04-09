@@ -40,6 +40,7 @@ public class UI_Btns : MonoBehaviour
         gm.InitializeStar();
         gm.CurrentCoin.text = gm.StartCoin.ToString(); //코인 초기화
         StartButton.SetActive(true); //start button 제거
+        Destroy(Player.gameObject.GetComponent<ConstantForce>());
     }
 
     public void SellBtn()

@@ -10,6 +10,7 @@ public class UI_Btns : MonoBehaviour
     public GameObject SettingContainer;
     public GameObject StartButton = null;
     public GameObject StopButton = null;
+    public GameObject ShopPanel = null;
 
     private Rigidbody rb;
     private void Start()
@@ -62,6 +63,20 @@ public class UI_Btns : MonoBehaviour
         StopButton.SetActive(false);
         Destroy(Player.gameObject.GetComponent<ConstantForce>());
 
+    }
+
+    public void ShopBtn()
+    {
+        if(ShopPanel != null)
+        {
+            Animator animator = ShopPanel.GetComponent<Animator>();
+            if(animator != null)
+            {
+                bool isOpen = animator.GetBool("open");
+                animator.SetBool("open", !isOpen);
+
+            }
+        }
     }
 
     public void SellBtn()

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Windows.Input;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
+using System;
 
 public class ToolsHandler : MonoBehaviour
 {
@@ -12,11 +14,39 @@ public class ToolsHandler : MonoBehaviour
     bool btnClicked = false;
     private Vector3 mousePos;
     GameManager gm = null;
+    public GameObject buttonTemplate;
+    public GameObject content;
+
+    [Serializable]
+    public struct Tool
+    {
+        public string name;
+        public string prefab_name;
+        public int cost;
+        public Sprite image;
+        //public string description;
+        //public int unlockLevel;
+    }
+
+    [SerializeField] Tool[] allTools;
 
     // Start is called before the first frame update
     void Start()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        int N = allTools.Length;
+        
+        GameObject tool;
+        for(int i = 0; i < N; i++)
+        {
+            tool = Instantiate(buttonTemplate, transform);
+            tool.transform.SetParent(content.transform);
+            tool.name = allTools[i].prefab_name;
+            //tool.transform.Find("Image").GetComponent <Image>().sprite = allTools[i].image;
+            tool.transform.Find("CostText").GetComponent<TextMeshProUGUI>().text = allTools[i].cost + "$";
+            tool.transform.Find("NameText").GetComponent<TextMeshProUGUI>().text = allTools[i].name;
+        }
+        Destroy(buttonTemplate);
     }
 
     // Update is called once per frame
@@ -64,6 +94,7 @@ public class ToolsHandler : MonoBehaviour
     public void OnClick()
     {
         GameObject tempBtn = EventSystem.current.currentSelectedGameObject;
+        Debug.Log("clicked");
 
         if (!btnClicked)
         {

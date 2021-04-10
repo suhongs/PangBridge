@@ -74,7 +74,6 @@ public class UI_Btns : MonoBehaviour
             {
                 bool isOpen = animator.GetBool("open");
                 animator.SetBool("open", !isOpen);
-
             }
         }
     }

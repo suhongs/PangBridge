@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 using System;
+using UnityEngine.UI;
 
 public class ToolsHandler : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class ToolsHandler : MonoBehaviour
     GameManager gm = null;
     public GameObject buttonTemplate;
     public GameObject content;
+    int curToolCost;
+
+    int N;
 
     [Serializable]
     public struct Tool
@@ -33,8 +37,8 @@ public class ToolsHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        N = allTools.Length;
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        int N = allTools.Length;
         
         GameObject tool;
         for(int i = 0; i < N; i++)
@@ -43,6 +47,7 @@ public class ToolsHandler : MonoBehaviour
             tool.transform.SetParent(content.transform);
             tool.name = allTools[i].prefab_name;
             //tool.transform.Find("Image").GetComponent <Image>().sprite = allTools[i].image;
+            tool.transform.Find("Cost").GetComponent<Text>().text = allTools[i].cost.ToString();
             tool.transform.Find("CostText").GetComponent<TextMeshProUGUI>().text = allTools[i].cost + "$";
             tool.transform.Find("NameText").GetComponent<TextMeshProUGUI>().text = allTools[i].name;
         }
@@ -73,8 +78,9 @@ public class ToolsHandler : MonoBehaviour
             { 
                 if (tool != null)
                 {
-                    // 클릭하면 따라다니던 오브젝트 그 위치에 고정
-
+                    // 클릭하면 따라다니던 오브젝트 그 위치에 고정 & 구매
+                    gm.currentCoin -= int.Parse(tool.transform.GetChild(0).name);
+                    gm.UpdateUI();
                     // !! 보드 위가 아니거나 다른 오브젝트와 겹치는 경우 놓이지 않게 하는 기능 추가해야 함 !!
                     tool = null;
                     btnClicked = false;
@@ -99,13 +105,16 @@ public class ToolsHandler : MonoBehaviour
         {
             btnClicked = true;
             curTool = tempBtn.name;
+            
             //Debug.Log(curTool);
             // 버튼 이름으로 프리팹 불러옴
             prefab = Resources.Load("Prefab/" + curTool) as GameObject;
             tool = MonoBehaviour.Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
             tool.tag = "Tool";
-            gm.CurrentCoin.text = (int.Parse(gm.CurrentCoin.text)-1).ToString();
             // 리셋 버튼 누르면 태그가 Tool인 오브젝트 없애고 돈 환불처리 시키기
+            
+            GameObject cost = new GameObject(tempBtn.transform.Find("Cost").GetComponent<Text>().text);
+            cost.transform.SetParent(tool.transform);
         }
     }
 }

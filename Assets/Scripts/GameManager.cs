@@ -3,16 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public Transform ResetPoint; //초기화 버튼 클릭시 이동할 위치
-    public int StartCoin = 5; //게임시작시 지급될 코인수
-    public Text CurrentCoin; //현재 코인수
+    public TextMeshProUGUI StageText;   // 스테이지 표시
 
-    public int MaxStar = 3; //최대 별 수
-    public Text StartStar = null;
-    public Text CurrentStar = null; //현재 별 수
+    public Transform ResetPoint; //초기화 버튼 클릭시 이동할 위치
+
+    public int startCoin = 100; //게임시작시 지급될 코인수
+    public int currentCoin = 0; //현재 코인 수
+    public TextMeshProUGUI CurrentCoinText;
+
+    public int maxStar = 3; //최대 별 수
+    public int currentStar = 0; //현재 별 수
+    public TextMeshProUGUI ScoreText;
+
+    public int timer = 200; // 타이머
+    public TextMeshProUGUI TimerText;
 
     public GameObject[] stars; //별들을 담을 배열
 
@@ -28,16 +36,29 @@ public class GameManager : MonoBehaviour
     public float prevAngle;
 
 // Start is called before the first frame update
-void Start()
+    void Start()
     {
-        CurrentCoin.text = StartCoin.ToString();
-        StartStar.text = "/ " + MaxStar.ToString();
-        CurrentStar.text = "0";
+        currentCoin = startCoin;
+        CurrentCoinText.text = currentCoin+"$";
+        ScoreText.text = currentStar + "/" + maxStar;
+        TimerText.text = timer.ToString();
 
         ToolUI = GameObject.FindWithTag("ToolUI");
         ToolUI.SetActive(false);
 
     }
+
+    private void Update()
+    {
+        // 타이머
+    }
+
+    public void UpdateUI()
+    {
+        CurrentCoinText.text = currentCoin + "$";
+        ScoreText.text = currentStar + "/" + maxStar;
+    }
+
     public void InitializeStar() //reset버튼 클릭시 star 값 및 위치 초기화
     {
         //별도 스크립트 혹은 함수로 옮기는 것을 고려
@@ -52,7 +73,8 @@ void Start()
         GameObject starthree = Instantiate(newstar, new Vector3(-27.07f, -16.11f, -0.03f), newstar.transform.rotation);
 
 
-        CurrentStar.text = "0";
+        currentStar = 0;
+        UpdateUI();
     }
     private void OnMouseDown()
     {

@@ -16,7 +16,8 @@ public class Player : MonoBehaviour
         if(other.gameObject.CompareTag("Star"))
         {
             Destroy(other.gameObject);
-            gm.CurrentStar.text = (int.Parse(gm.CurrentStar.text) + 1).ToString();
+            gm.currentStar++;
+            gm.UpdateUI();
         }
     }
 

@@ -45,7 +45,6 @@ public class UI_Btns : MonoBehaviour
         Player.GetComponent<SphereCollider>().enabled = false; //플레이어 collider 끔
 
         gm.InitializeStar();
-        gm.CurrentCoin.text = gm.StartCoin.ToString(); //코인 초기화
         StartButton.SetActive(true);
         StopButton.SetActive(false);
         Destroy(Player.gameObject.GetComponent<ConstantForce>());
@@ -66,8 +65,8 @@ public class UI_Btns : MonoBehaviour
         rb.velocity = Vector3.zero; //플레이어에게 받던 힘x
         Player.GetComponent<SphereCollider>().enabled = false; //플레이어 collider 끔
 
+        gm.currentCoin = gm.startCoin;
         gm.InitializeStar();
-        gm.CurrentCoin.text = gm.StartCoin.ToString(); //코인 초기화
         StartButton.SetActive(true);
         StopButton.SetActive(false);
         Destroy(Player.gameObject.GetComponent<ConstantForce>());
@@ -89,9 +88,10 @@ public class UI_Btns : MonoBehaviour
 
     public void SellBtn()
     {
+        gm.currentCoin += int.Parse(gm.SelectedTool.transform.GetChild(0).name);
         Destroy(gm.SelectedTool.gameObject);
         gm.ResetAllSelect();
-        gm.CurrentCoin.text = (int.Parse(gm.CurrentCoin.text) + 1).ToString(); //+1자리에 각 도구 가격 넣으면 될 듯
+        gm.UpdateUI();
     }
 
 

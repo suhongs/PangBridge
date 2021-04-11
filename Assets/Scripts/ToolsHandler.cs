@@ -94,7 +94,6 @@ public class ToolsHandler : MonoBehaviour
     public void OnClick()
     {
         GameObject tempBtn = EventSystem.current.currentSelectedGameObject;
-        Debug.Log("clicked");
 
         if (!btnClicked)
         {

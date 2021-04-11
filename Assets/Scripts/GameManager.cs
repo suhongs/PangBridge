@@ -23,12 +23,20 @@ public class GameManager : MonoBehaviour
     private Vector3 mouseDownPoint;
     private Vector3 MouseUpPoint;
     private Vector3 prevPoint;
+
+    public GameObject ToolUI;
+    public float prevAngle;
+
 // Start is called before the first frame update
 void Start()
     {
         CurrentCoin.text = StartCoin.ToString();
         StartStar.text = "/ " + MaxStar.ToString();
         CurrentStar.text = "0";
+
+        ToolUI = GameObject.FindWithTag("ToolUI");
+        ToolUI.SetActive(false);
+
     }
     public void InitializeStar() //reset버튼 클릭시 star 값 및 위치 초기화
     {
@@ -54,8 +62,9 @@ void Start()
 
     private void OnMouseDrag()
     {
+        
         float mZCoord;
-
+        
         if (rotateMode)
         {
             mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
@@ -85,7 +94,8 @@ void Start()
     {
         rotateMode = false;
         SelectedTool = null;
-        GameObject ToolUI = GameObject.Find("MainCanvas").transform.GetChild(7).gameObject;
+        //GameObject ToolUI = GameObject.Find("MainCanvas").transform.GetChild(7).gameObject;
+
         ToolUI.SetActive(false);
 
         GameObject[] tools = GameObject.FindGameObjectsWithTag("Tool"); //Tool태그의 오브젝트 검색 후 배열에 담음

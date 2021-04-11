@@ -13,23 +13,30 @@ public class DragObject : MonoBehaviour
     private void Start()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
-        ToolUI = GameObject.Find("MainCanvas").transform.GetChild(7).gameObject;
+        //ToolUI = GameObject.Find("MainCanvas").transform.GetChild(7).gameObject;
+        ToolUI = gm.ToolUI;
         StartColor = gameObject.GetComponent<MeshRenderer>().material.color;
+
     }
 
     private void OnMouseDown()
     {
-        mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
-        mOffset = gameObject.transform.position - GetMouseWorldPos();
-        ToolUI.SetActive(true);
-        
-        GameObject ToolName = GameObject.Find("MainCanvas/ToolUI/ToolUIBox/ToolNameBox").transform.GetChild(0).gameObject;
-        ToolName.GetComponent<Text>().text = gameObject.name;
+        if (gameObject.tag == "Tool")
+        {
+            mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
+            mOffset = gameObject.transform.position - GetMouseWorldPos();
+            ToolUI.SetActive(true);
+            ToolUI.transform.position = Camera.main.WorldToScreenPoint(transform.position);
+            ToolUI.GetComponent<RectTransform>().sizeDelta = new Vector2(transform.localScale.x * 50, transform.localScale.y * 50);
 
-        if (gm.SelectedTool != null)
-            gm.SelectedTool.GetComponent<MeshRenderer>().material.color = StartColor;
-        gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
-        gm.SelectedTool = gameObject;
+            //GameObject ToolName = GameObject.Find("MainCanvas/ToolUI/ToolUIBox/ToolNameBox").transform.GetChild(0).gameObject;
+            //ToolName.GetComponent<Text>().text = gameObject.name;
+
+            if (gm.SelectedTool != null)
+                gm.SelectedTool.GetComponent<MeshRenderer>().material.color = StartColor;
+            gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+            gm.SelectedTool = gameObject;
+        }
     }
 
     public Vector3 GetMouseWorldPos()
@@ -42,7 +49,11 @@ public class DragObject : MonoBehaviour
 
     public void OnMouseDrag()
     {
-        transform.position = new Vector3(GetMouseWorldPos().x + mOffset.x, GetMouseWorldPos().y + mOffset.y, 0f);
+        if (gameObject.tag == "Tool")
+        {
+            transform.position = new Vector3(GetMouseWorldPos().x + mOffset.x, GetMouseWorldPos().y + mOffset.y, 0f);
+            ToolUI.transform.position = Camera.main.WorldToScreenPoint(transform.position);
+        }
 
     }
 

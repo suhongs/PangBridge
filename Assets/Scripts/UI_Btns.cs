@@ -23,14 +23,22 @@ public class UI_Btns : MonoBehaviour
 
     public void StartBtn()
     {
+        gm.ResetAllSelect();
         rb.useGravity = true;
         Player.GetComponent<SphereCollider>().enabled = true;
         StartButton.SetActive(false);
         StopButton.SetActive(true);
+
+        if(gm.SelectedTool != null)
+        {
+            gm.SelectedTool = null;
+            gm.ToolUI.SetActive(false);
+        }
     }
 
     public void StopBtn()
     {
+        gm.ResetAllSelect();
         Player.transform.position = gm.ResetPoint.position; //플레이어를 reset point로 이동
         rb.useGravity = false; //플레이어 중력작용x
         rb.velocity = Vector3.zero; //플레이어에게 받던 힘x
@@ -45,6 +53,7 @@ public class UI_Btns : MonoBehaviour
 
     public void ResetBtn()
     {
+        gm.ResetAllSelect();
         GameObject [] tools = GameObject.FindGameObjectsWithTag("Tool"); //Tool태그의 오브젝트 검색 후 배열에 담음
 
         for(int i=0; i<tools.Length; i++)
@@ -81,10 +90,13 @@ public class UI_Btns : MonoBehaviour
     public void SellBtn()
     {
         Destroy(gm.SelectedTool.gameObject);
+        gm.ResetAllSelect();
         gm.CurrentCoin.text = (int.Parse(gm.CurrentCoin.text) + 1).ToString(); //+1자리에 각 도구 가격 넣으면 될 듯
     }
+
+
     public void RotateBtn()
     {
-        gm.GetComponent<GameManager>().rotateMode = true;
+        //gm.GetComponent<GameManager>().rotateMode = true;
     }
 }

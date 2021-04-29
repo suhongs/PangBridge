@@ -2647,7 +2647,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.000061035156}
+  m_AnchoredPosition: {x: 0.00002193451, y: -0.000061035156}
   m_SizeDelta: {x: -9.000916, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &564901671
@@ -7595,6 +7595,10 @@ MonoBehaviour:
   - name: Magnet
     prefab_name: MagneticSphere
     cost: 10
+    image: {fileID: 0}
+  - name: Note
+    prefab_name: NoteDo
+    cost: 1
     image: {fileID: 0}
 --- !u!1 &1826392109
 GameObject:

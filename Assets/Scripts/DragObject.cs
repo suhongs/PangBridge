@@ -16,11 +16,11 @@ public class DragObject : MonoBehaviour
         //ToolUI = GameObject.Find("MainCanvas").transform.GetChild(7).gameObject;
         ToolUI = gm.ToolUI;
         StartColor = gameObject.GetComponent<MeshRenderer>().material.color;
-
     }
 
     private void OnMouseDown()
     {
+        //Debug.Log("Working Check"); //Mesh Collider에서는 작동을 하지 않음? 일단 Box Collider로 대체
         if (gameObject.tag == "Tool")
         {
             mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;

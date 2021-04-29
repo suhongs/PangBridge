@@ -79,6 +79,7 @@ public class ToolsHandler : MonoBehaviour
                 if (tool != null)
                 {
                     // 클릭하면 따라다니던 오브젝트 그 위치에 고정 & 구매
+                    Debug.Log(tool.transform.GetChild(0).name);
                     gm.currentCoin -= int.Parse(tool.transform.GetChild(0).name);
                     gm.UpdateUI();
                     // !! 보드 위가 아니거나 다른 오브젝트와 겹치는 경우 놓이지 않게 하는 기능 추가해야 함 !!
@@ -115,6 +116,7 @@ public class ToolsHandler : MonoBehaviour
             
             GameObject cost = new GameObject(tempBtn.transform.Find("Cost").GetComponent<Text>().text);
             cost.transform.SetParent(tool.transform);
+            cost.transform.SetAsFirstSibling(); //0429 추가, 자식이 있는 오브젝트 대상으로는 Cost 자식이 처음으로 와야함 (순서 재정렬)
         }
     }
 }

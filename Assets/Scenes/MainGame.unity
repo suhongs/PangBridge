@@ -7600,6 +7600,14 @@ MonoBehaviour:
     prefab_name: NoteDo
     cost: 1
     image: {fileID: 0}
+  - name: Portal
+    prefab_name: Portal
+    cost: 1
+    image: {fileID: 0}
+  - name: PortalExit
+    prefab_name: PortalOut
+    cost: 1
+    image: {fileID: 0}
 --- !u!1 &1826392109
 GameObject:
   m_ObjectHideFlags: 0

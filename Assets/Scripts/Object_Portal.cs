@@ -20,7 +20,7 @@ public class Object_Portal : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(Collision other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
@@ -28,9 +28,9 @@ public class Object_Portal : MonoBehaviour
             ResetPortal = GameObject.Find("PortalOut(Clone)");
             if(ResetPortal != null)
             {
-                float speed = rigid.velocity.magnitude * 100;
+                float speed = rigid.velocity.magnitude * 50;
                 Vector3 inNormal = Vector3.Normalize(transform.position - rigid.transform.position);
-                rigid.transform.position = new Vector3(ResetPortal.transform.position.x, ResetPortal.transform.position.y - 1, 0f);
+                rigid.transform.position = new Vector3(ResetPortal.transform.position.x, ResetPortal.transform.position.y, 0f);
                 //진행하는 방향이 바뀌는 문제가 있어서 진입 각도와 같은 방향으로 나가도록 설정? 혹은 오브젝트의 Rotation을 기준으로 이를 설정하는 방법도 고려해봐야?
                 //1안: 포탈 타고 가면 속도를 아예 0으로 초기화
                 //rigid.velocity = new Vector3(0, 0, 0);

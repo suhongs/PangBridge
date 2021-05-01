@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Object_Note : MonoBehaviour
 {
-    public GameObject nodeParticle; 
+    public GameObject nodeParticle;
     AudioSource audioSource;
     // Start is called before the first frame update
     void Start()

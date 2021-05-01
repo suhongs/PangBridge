@@ -51,10 +51,21 @@ public class DragObject : MonoBehaviour
 
             try
             {
-                gameObject.GetComponent<BoxCollider>().isTrigger = true;
+                if(gm.FirstTrigger)
+                {
+                    gameObject.GetComponent<BoxCollider>().isTrigger = true;
+                    gm.FirstTrigger = false;
+                }
+                else
+                {
+                    gm.TriggerStatus = gameObject.GetComponent<BoxCollider>().isTrigger;
+                    gameObject.GetComponent<BoxCollider>().isTrigger = true;
+                }
+                Debug.Log(gm.TriggerStatus);
             }
             catch
             {
+                gm.TriggerStatus = gameObject.GetComponent<BoxCollider>().isTrigger;
                 gameObject.GetComponent<SphereCollider>().isTrigger = true;
             }
 
@@ -127,16 +138,16 @@ public class DragObject : MonoBehaviour
                 }
                 */
             }
-            /*
+
             try
             {
-                gameObject.GetComponent<BoxCollider>().isTrigger = false;
+                gameObject.GetComponent<BoxCollider>().isTrigger = gm.TriggerStatus;
             }
             catch
             {
-                gameObject.GetComponent<SphereCollider>().isTrigger = false;
+                gameObject.GetComponent<SphereCollider>().isTrigger = gm.TriggerStatus;
             }
-            */
+
         }
     }
 
@@ -145,7 +156,7 @@ public class DragObject : MonoBehaviour
         if (col.gameObject.tag == "Tool" || col.gameObject.tag == "Player")
         {
             gm.CanPlace = false;
-            Debug.Log(gm.CanPlace);
+            //Debug.Log(gm.CanPlace);
         }
     }
     public void OnTriggerStay(Collider col)
@@ -156,8 +167,8 @@ public class DragObject : MonoBehaviour
     {
         if (col.gameObject.tag == "Tool" || col.gameObject.tag == "Player")
         {
-             gm.CanPlace = true;
-            Debug.Log(gm.CanPlace);
+            gm.CanPlace = true;
+            //Debug.Log(gm.CanPlace);
         }
     }
 

@@ -89,6 +89,17 @@ public class ToolsHandler : MonoBehaviour
                     }
                     else
                     {
+                        //이전 트리거 상태 복구 (DragObject에서 재호출되므로 불필요?
+                        /*
+                        try
+                        {
+                            tool.gameObject.GetComponent<BoxCollider>().isTrigger = gm.TriggerStatus;
+                        }
+                        catch
+                        {
+                            tool.gameObject.GetComponent<SphereCollider>().isTrigger = gm.TriggerStatus;
+                        }
+                        */
                         // 클릭하면 따라다니던 오브젝트 그 위치에 고정 & 구매
                         Debug.Log(tool.transform.GetChild(0).name);
                         gm.currentCoin -= int.Parse(tool.transform.GetChild(0).name);
@@ -127,10 +138,14 @@ public class ToolsHandler : MonoBehaviour
             //수정 중
             try
             {
+                gm.TriggerStatus = tool.gameObject.GetComponent<BoxCollider>().isTrigger;
+                gm.FirstTrigger = true;
                 tool.gameObject.GetComponent<BoxCollider>().isTrigger = true;
             }
             catch
             {
+                gm.TriggerStatus = tool.gameObject.GetComponent<BoxCollider>().isTrigger;
+                gm.FirstTrigger = true;
                 tool.gameObject.GetComponent<SphereCollider>().isTrigger = true;
             }
             toolrigid = tool.gameObject.GetComponent<Rigidbody>();

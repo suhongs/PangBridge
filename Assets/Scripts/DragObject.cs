@@ -65,8 +65,16 @@ public class DragObject : MonoBehaviour
             }
             catch
             {
-                gm.TriggerStatus = gameObject.GetComponent<BoxCollider>().isTrigger;
-                gameObject.GetComponent<SphereCollider>().isTrigger = true;
+                if (gm.FirstTrigger)
+                {
+                    gameObject.GetComponent<SphereCollider>().isTrigger = true;
+                    gm.FirstTrigger = false;
+                }
+                else
+                {
+                    gm.TriggerStatus = gameObject.GetComponent<SphereCollider>().isTrigger;
+                    gameObject.GetComponent<SphereCollider>().isTrigger = true;
+                }
             }
 
             gm.SelectedTool = gameObject;

@@ -144,7 +144,7 @@ public class ToolsHandler : MonoBehaviour
             }
             catch
             {
-                gm.TriggerStatus = tool.gameObject.GetComponent<BoxCollider>().isTrigger;
+                gm.TriggerStatus = tool.gameObject.GetComponent<SphereCollider>().isTrigger;
                 gm.FirstTrigger = true;
                 tool.gameObject.GetComponent<SphereCollider>().isTrigger = true;
             }

@@ -32,7 +32,7 @@ public class ToolsHandler : MonoBehaviour
         //public string description;
         //public int unlockLevel;
     }
-
+    
     [SerializeField] Tool[] allTools;
 
     // Start is called before the first frame update

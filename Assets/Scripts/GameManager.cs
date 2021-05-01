@@ -116,6 +116,7 @@ public class GameManager : MonoBehaviour
         {
             ResetAllSelect();
         }
+        rotateMode = false;
     }
 
     public void ResetAllSelect() //바탕 클릭 이벤트

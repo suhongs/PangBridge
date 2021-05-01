@@ -39,7 +39,7 @@ public class ItemDragHandler : MonoBehaviour, IPointerDownHandler, IBeginDragHan
     public void OnEndDrag(PointerEventData eventData)
     {
         gm.rotateMode = false;
-        rectTransform.position = prevPos;
+        rectTransform.position = prevPos; 
     }
 
     public void OnDrag(PointerEventData eventData)

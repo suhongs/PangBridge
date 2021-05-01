@@ -9,6 +9,8 @@ TagManager:
   - Star
   - ToolUI
   - RotateBtn
+  - Locked
+  - UnLocked
   layers:
   - Default
   - TransparentFX

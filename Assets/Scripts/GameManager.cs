@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour
     public bool TriggerStatus = false; //현재 선택한 오브젝트의 트리거 상태 확인 (ToolHandler와 DragObject가 공유하는 변수가 필요)
     public bool FirstTrigger = false; //현재 선택한 오브젝트의 트리거 상태 확인 (ToolHandler와 DragObject가 공유하는 변수가 필요)
 
+    public static bool isGaming = false;
+
     // Start is called before the first frame update
     void Start()
     {

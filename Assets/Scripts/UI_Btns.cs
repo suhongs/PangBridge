@@ -25,6 +25,7 @@ public class UI_Btns : MonoBehaviour
     {
         gm.ResetAllSelect();
         rb.useGravity = true;
+        GameManager.isGaming = true;
         Player.GetComponent<SphereCollider>().enabled = true;
         Player.GetComponent<SphereCollider>().isTrigger = false;
         Player.GetComponent<Rigidbody>().isKinematic = false;
@@ -40,6 +41,7 @@ public class UI_Btns : MonoBehaviour
 
     public void StopBtn()
     {
+        GameManager.isGaming = false;
         gm.ResetAllSelect();
         Player.transform.position = gm.ResetPoint.position; //플레이어를 reset point로 이동
         Player.transform.rotation = Quaternion.identity;
@@ -59,6 +61,7 @@ public class UI_Btns : MonoBehaviour
     public void ResetBtn()
     {
         gm.ResetAllSelect();
+        GameManager.isGaming = false;
         GameObject [] tools = GameObject.FindGameObjectsWithTag("Tool"); //Tool태그의 오브젝트 검색 후 배열에 담음
 
         for(int i=0; i<tools.Length; i++)

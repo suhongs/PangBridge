@@ -139,7 +139,7 @@ public class DragObject : MonoBehaviour
 
     public void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Tool")
+        if (col.gameObject.tag == "Tool" || col.gameObject.tag == "Player")
         {
             gm.CanPlace = false;
             Debug.Log(gm.CanPlace);
@@ -151,7 +151,7 @@ public class DragObject : MonoBehaviour
     }
     public void OnTriggerExit(Collider col)
     {
-        if (col.gameObject.tag == "Tool")
+        if (col.gameObject.tag == "Tool" || col.gameObject.tag == "Player")
         {
              gm.CanPlace = true;
             Debug.Log(gm.CanPlace);

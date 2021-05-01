@@ -31,6 +31,8 @@ public class UI_Btns : MonoBehaviour
         Player.GetComponent<Rigidbody>().isKinematic = false;
         StartButton.SetActive(false);
         StopButton.SetActive(true);
+        if(ShopPanel.GetComponent<Animator>().GetBool("open"))
+            ShopPanel.GetComponent<Animator>().SetBool("open", !ShopPanel.GetComponent<Animator>().GetBool("open"));
 
         if(gm.SelectedTool != null)
         {
@@ -88,13 +90,16 @@ public class UI_Btns : MonoBehaviour
 
     public void ShopBtn()
     {
-        if(ShopPanel != null)
+        if (!GameManager.isGaming)
         {
-            Animator animator = ShopPanel.GetComponent<Animator>();
-            if(animator != null)
+            if (ShopPanel != null)
             {
-                bool isOpen = animator.GetBool("open");
-                animator.SetBool("open", !isOpen);
+                Animator animator = ShopPanel.GetComponent<Animator>();
+                if (animator != null)
+                {
+                    bool isOpen = animator.GetBool("open");
+                    animator.SetBool("open", !isOpen);
+                }
             }
         }
     }

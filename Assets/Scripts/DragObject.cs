@@ -7,14 +7,11 @@ public class DragObject : MonoBehaviour
     private Vector3 mOffset;
     private float mZCoord;
     private GameManager gm;
-<<<<<<< HEAD
-    private GameObject ToolUI; //도구 클릭시 판매,회전 UI
-=======
+
     private GameObject ToolUI; //도구 클릭시 우측의 UI
     private Rigidbody rigid; //0501 추가, 겹침 현상 구현을 위해
     private Vector3 InitialPosition; // 움직일 때 최초 위치 (겹쳤을 때 돌아갈 위치)
 
->>>>>>> a94db38e42539ac22fd92fba417bc592cf484e9c
     public Color StartColor;
     
     

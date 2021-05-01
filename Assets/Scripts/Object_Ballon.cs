@@ -5,11 +5,12 @@ using UnityEngine;
 public class Object_Ballon : MonoBehaviour
 {
     // Start is called before the first frame update
-    Vector3 defaultPosition;
+    public Vector3 defaultPosition = new Vector3(0, 0, 0);
     public bool isOnTrigger;
+    public bool isFirst;
     void Start()
     {
-        defaultPosition = transform.position;
+        isFirst = true;
         isOnTrigger = false;
     }
 
@@ -17,8 +18,23 @@ public class Object_Ballon : MonoBehaviour
     void Update()
     {
         if (GameManager.isGaming)
+        {
+            if (isFirst)
+            {
+                defaultPosition = transform.position;
+                isFirst = false;
+            }
             transform.position += new Vector3(0, 1, 0) * 0.005f;
-        else
-            transform.position = defaultPosition;
+        }
+        else if (GameManager.isGaming == false)
+        {
+
+            if (!isFirst)
+            {
+                transform.position = defaultPosition;
+                isFirst = true;
+            }
+            defaultPosition = transform.position;
+        }
     }
 }

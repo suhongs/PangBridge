@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Object_Portal : MonoBehaviour
 {
+    //개선점
+    //포탈과 1:1 대응 기능? 현재로서는 단 하나의 포탈 출구만이 포탈에 대응됨
+    //
     GameObject ResetPortal;
     // Start is called before the first frame update
     void Start()

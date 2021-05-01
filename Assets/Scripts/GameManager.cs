@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     public GameObject ToolUI;
     public float prevAngle;
 
+    public bool isCannon = false; //대포 여부
 // Start is called before the first frame update
     void Start()
     {

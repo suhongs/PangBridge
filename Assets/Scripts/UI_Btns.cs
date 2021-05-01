@@ -40,8 +40,10 @@ public class UI_Btns : MonoBehaviour
     {
         gm.ResetAllSelect();
         Player.transform.position = gm.ResetPoint.position; //플레이어를 reset point로 이동
+        Player.transform.rotation = Quaternion.identity;
         rb.useGravity = false; //플레이어 중력작용x
         rb.velocity = Vector3.zero; //플레이어에게 받던 힘x
+        rb.angularVelocity = Vector3.zero;
         Player.GetComponent<SphereCollider>().enabled = false; //플레이어 collider 끔
 
         gm.InitializeStar();
@@ -61,8 +63,10 @@ public class UI_Btns : MonoBehaviour
         }
 
         Player.transform.position = gm.ResetPoint.position; //플레이어를 reset point로 이동
+        Player.transform.rotation = Quaternion.identity;
         rb.useGravity = false; //플레이어 중력작용x
         rb.velocity = Vector3.zero; //플레이어에게 받던 힘x
+        rb.angularVelocity = Vector3.zero;
         Player.GetComponent<SphereCollider>().enabled = false; //플레이어 collider 끔
 
         gm.currentCoin = gm.startCoin;

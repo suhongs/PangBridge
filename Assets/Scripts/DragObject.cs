@@ -7,7 +7,7 @@ public class DragObject : MonoBehaviour
     private Vector3 mOffset;
     private float mZCoord;
     private GameManager gm;
-    private GameObject ToolUI; //도구 클릭시 우측의 UI
+    private GameObject ToolUI; //도구 클릭시 판매,회전 UI
     public Color StartColor;
 
     private void Start()

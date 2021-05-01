@@ -126,6 +126,7 @@ public class DragObject : MonoBehaviour
                 }
                 */
             }
+            /*
             try
             {
                 gameObject.GetComponent<BoxCollider>().isTrigger = false;
@@ -134,6 +135,7 @@ public class DragObject : MonoBehaviour
             {
                 gameObject.GetComponent<SphereCollider>().isTrigger = false;
             }
+            */
         }
     }
 

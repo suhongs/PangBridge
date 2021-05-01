@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     public GameObject[] stars; //별들을 담을 배열
 
     public GameObject SelectedTool = null; //클릭으로 선택한 도구
+    public bool CanPlace = true;
+    public bool MouseFlag = false;
 
     public bool rotateMode = false;         // 회전 모드
 
@@ -85,7 +87,6 @@ public class GameManager : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        
         float mZCoord;
         
         if (rotateMode)

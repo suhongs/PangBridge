@@ -19,7 +19,8 @@ public class GameManager : MonoBehaviour
     public int currentStar = 0; //현재 별 수
     public TextMeshProUGUI ScoreText;
 
-    public int timer = 200; // 타이머
+    public float timer = 200; // 타이머
+    float time = 0;
     public TextMeshProUGUI TimerText;
 
     public GameObject[] stars; //별들을 담을 배열
@@ -60,6 +61,11 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         // 타이머
+        if(GameManager.isGaming)
+        {
+            time += Time.deltaTime;
+            TimerText.text = (200 - ((int)time % 60)).ToString();
+        }
     }
 
     public void UpdateUI()
@@ -81,7 +87,8 @@ public class GameManager : MonoBehaviour
         GameObject startwo = Instantiate(newstar, new Vector3(-23.37f, -12.48f, -0.03f), newstar.transform.rotation);
         GameObject starthree = Instantiate(newstar, new Vector3(-27.07f, -16.11f, -0.03f), newstar.transform.rotation);
 
-
+        time = 0;
+        TimerText.text = 200.ToString();
         currentStar = 0;
         UpdateUI();
     }

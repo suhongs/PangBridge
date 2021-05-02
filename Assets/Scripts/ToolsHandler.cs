@@ -127,6 +127,10 @@ public class ToolsHandler : MonoBehaviour
 
         if (!btnClicked)
         {
+            if(gm.currentCoin < int.Parse(tempBtn.transform.Find("Cost").GetComponent<Text>().text))
+            {
+                return;
+            }
             btnClicked = true;
             curTool = tempBtn.name;
             

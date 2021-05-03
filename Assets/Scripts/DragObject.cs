@@ -11,6 +11,7 @@ public class DragObject : MonoBehaviour
     private GameObject ToolUI; //도구 클릭시 우측의 UI
     private Rigidbody rigid; //0501 추가, 겹침 현상 구현을 위해
     private Vector3 InitialPosition; // 움직일 때 최초 위치 (겹쳤을 때 돌아갈 위치)
+    private bool StayFlag;
 
     public Color StartColor;
     
@@ -164,19 +165,23 @@ public class DragObject : MonoBehaviour
         if (col.gameObject.tag == "Tool" || col.gameObject.tag == "Player")
         {
             gm.CanPlace = false;
-            //Debug.Log(gm.CanPlace);
         }
     }
     public void OnTriggerStay(Collider col)
     {
-
+        if (col.gameObject.tag == "Tool" || col.gameObject.tag == "Player")
+        {
+            gm.CanPlace = false;
+        }
+        //만약 다른 오브젝트에 접근이 잦아지면서 렉이나 성능 저하가 발생한다면
+        //Flag를 하나 세워서, Stay 내에서는 내부 스크립트에만 접근
+        //Exit에서 조건부에 StayFlag가 False일 때만 Exit이 작동하는 것으로 간주하기
     }
     public void OnTriggerExit(Collider col)
     {
-        if (col.gameObject.tag == "Tool" || col.gameObject.tag == "Player")
+        if ((col.gameObject.tag == "Tool" || col.gameObject.tag == "Player"))
         {
             gm.CanPlace = true;
-            //Debug.Log(gm.CanPlace);
         }
     }
 

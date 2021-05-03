@@ -20,7 +20,6 @@ public class Object_Note : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("??");
         if (other.gameObject.tag == "Player")
         {
             Vector3 colpoint = other.transform.position;

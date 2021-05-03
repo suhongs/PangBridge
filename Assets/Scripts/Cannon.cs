@@ -18,13 +18,13 @@ public class Cannon : MonoBehaviour
     {
         if(gm.isCannon) //대포가 마우스 방향으로 향하게
         {
-            CannonDir.transform.RotateAround(transform.position, Vector3.forward, 50f * Time.deltaTime);
+            CannonDir.transform.RotateAround(transform.position, Vector3.forward, 75f * Time.deltaTime);
         }
         if(gm.isCannon)
         {
             if(Input.GetMouseButtonDown(0))
             {
-                player.GetComponent<Rigidbody>().velocity = CannonDir.transform.right * 30f;
+                player.GetComponent<Rigidbody>().velocity = CannonDir.transform.right * 20f;
                 player.GetComponent<Rigidbody>().useGravity = true;
             }
         }

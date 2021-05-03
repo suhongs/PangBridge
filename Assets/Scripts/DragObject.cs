@@ -42,8 +42,6 @@ public class DragObject : MonoBehaviour
             ToolUI.transform.position = Camera.main.WorldToScreenPoint(transform.position);
             ToolUI.GetComponent<RectTransform>().sizeDelta = new Vector2(transform.localScale.x * 50, transform.localScale.y * 50);
 
-            //GameObject ToolName = GameObject.Find("MainCanvas/ToolUI/ToolUIBox/ToolNameBox").transform.GetChild(0).gameObject;
-            //ToolName.GetComponent<Text>().text = gameObject.name;
 
             if (gm.SelectedTool != null)
                 gm.SelectedTool.GetComponent<MeshRenderer>().material.color = StartColor;

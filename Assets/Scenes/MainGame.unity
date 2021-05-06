@@ -607,6 +607,7 @@ RectTransform:
   - {fileID: 439827669}
   - {fileID: 1766494280}
   - {fileID: 1337707713}
+  - {fileID: 1649142628}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4387,7 +4388,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1933215289}
   m_HandleRect: {fileID: 1933215288}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -5796,6 +5797,14 @@ MonoBehaviour:
     image: {fileID: 0}
   - name: Cannon
     prefab_name: Cannon
+    cost: 1
+    image: {fileID: 0}
+  - name: Rubber
+    prefab_name: Rubber
+    cost: 1
+    image: {fileID: 0}
+  - name: Balloon
+    prefab_name: Balloon
     cost: 1
     image: {fileID: 0}
 --- !u!1 &1826392109

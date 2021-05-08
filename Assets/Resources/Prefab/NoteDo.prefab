@@ -44,10 +44,10 @@ GameObject:
   - component: {fileID: 3058964773992293173}
   - component: {fileID: 5063037944232542247}
   - component: {fileID: 6442435203333847306}
-  - component: {fileID: 5839151145559405528}
   - component: {fileID: 5065050488225125187}
   - component: {fileID: 5162414538428322676}
   - component: {fileID: -1872768466542315}
+  - component: {fileID: 395113077659789555}
   m_Layer: 0
   m_Name: NoteDo
   m_TagString: Untagged
@@ -228,19 +228,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartColor: {r: 1, g: 1, b: 1, a: 1}
---- !u!114 &5839151145559405528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4504266778931323191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47f230d881bac5d4cae6311c94407870, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodeParticle: {fileID: 1783276646780061817, guid: 1c0520325bd5b534188c40bef406dc5c, type: 3}
 --- !u!64 &5065050488225125187
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -284,6 +271,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &395113077659789555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4504266778931323191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47f230d881bac5d4cae6311c94407870, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeParticle: {fileID: 1783276646780061817, guid: 1c0520325bd5b534188c40bef406dc5c, type: 3}
 --- !u!1 &4648787160428836031
 GameObject:
   m_ObjectHideFlags: 0

@@ -77,21 +77,23 @@ public class GameManager : MonoBehaviour
     public void InitializeStar() //reset버튼 클릭시 star 값 및 위치 초기화
     {
         //별도 스크립트 혹은 함수로 옮기는 것을 고려
-        stars = GameObject.FindGameObjectsWithTag("Star");
-        for (int i = 0; i < stars.Length; i++)
-        {
-            Destroy(stars[i]); //
-        }
-        GameObject newstar = Resources.Load("Prefab/Star") as GameObject;
-        GameObject starone = Instantiate(newstar, new Vector3(-19.91f, -9.03f, -0.03f), newstar.transform.rotation);
-        GameObject startwo = Instantiate(newstar, new Vector3(-23.37f, -12.48f, -0.03f), newstar.transform.rotation);
-        GameObject starthree = Instantiate(newstar, new Vector3(-27.07f, -16.11f, -0.03f), newstar.transform.rotation);
+        //stars = GameObject.FindGameObjectsWithTag("Star");
+        //for (int i = 0; i < stars.Length; i++)
+        //{
+        //    Destroy(stars[i]); //
+        //}
+        //Star관련은 Star Object를 수정하겠습니다. 잠시동안 별이 재생성되지 않습니다.
+        //GameObject newstar = Resources.Load("Prefab/Star") as GameObject;
+        //GameObject starone = Instantiate(newstar, new Vector3(-19.91f, -9.03f, -0.03f), newstar.transform.rotation);
+        //GameObject startwo = Instantiate(newstar, new Vector3(-23.37f, -12.48f, -0.03f), newstar.transform.rotation);
+        //GameObject starthree = Instantiate(newstar, new Vector3(-27.07f, -16.11f, -0.03f), newstar.transform.rotation);
 
         time = 0;
         TimerText.text = 200.ToString();
         currentStar = 0;
         UpdateUI();
     }
+
     private void OnMouseDown()
     {
         mouseDownPoint = Input.mousePosition;

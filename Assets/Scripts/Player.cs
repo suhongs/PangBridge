@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
+    
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Star"))

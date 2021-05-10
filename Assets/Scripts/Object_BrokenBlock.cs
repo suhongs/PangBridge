@@ -63,7 +63,7 @@ public class Object_BrokenBlock : MonoBehaviour
             }
             if (collisioncheck > 2)
             {
-                gameObject.GetComponent<BoxCollider>().isTrigger = true;
+                gameObject.GetComponent<BoxCollider>().isTrigger = true; //투과되도록
                 transform.localScale = new Vector3(0, 0, 0);
                 //gameObject.GetComponent<BoxCollider>().isTrigger = false;
             }

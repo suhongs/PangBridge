@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
     
+    /*star의 고유 이벤트로 이관
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Star"))
@@ -21,6 +22,6 @@ public class Player : MonoBehaviour
             gm.UpdateUI();
         }
     }
-
+    */
     
 }

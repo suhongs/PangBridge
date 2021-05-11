@@ -42,13 +42,4 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    public void BtnClicked()
-    {
-        string level_s = EventSystem.current.currentSelectedGameObject.name;
-        if (level_s == "1") level = 1;
-        if (level_s == "2") level = 2;
-        if (level_s == "3") level = 3;
-        if (level_s == "4") level = 4;
-        if (level_s == "5") level = 5;
-    }
 }

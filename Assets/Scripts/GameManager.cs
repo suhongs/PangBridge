@@ -44,6 +44,9 @@ public class GameManager : MonoBehaviour
     public bool FirstTrigger = false; //현재 선택한 오브젝트의 트리거 상태 확인 (ToolHandler와 DragObject가 공유하는 변수가 필요)
 
     public static bool isGaming = false;
+    public bool isCleared = false;   // 빨간 별 먹으면 완료
+
+    GameObject StageScoreUI;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +59,8 @@ public class GameManager : MonoBehaviour
         ToolUI = GameObject.FindWithTag("ToolUI");
         ToolUI.SetActive(false);
 
+        StageScoreUI = GameObject.Find("StageScoreUI");
+        StageScoreUI.SetActive(false);
     }
 
     private void Update()
@@ -66,6 +71,9 @@ public class GameManager : MonoBehaviour
             time += Time.deltaTime;
             TimerText.text = (200 - ((int)time % 60)).ToString();
         }
+
+        if(isCleared)
+            StageScoreUI.SetActive(true);
     }
 
     public void UpdateUI()

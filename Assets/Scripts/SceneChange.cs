@@ -14,6 +14,7 @@ public class SceneChange : MonoBehaviour
     {
         string level_s = EventSystem.current.currentSelectedGameObject.transform.parent.name;
         Debug.Log(level_s);
+
         if (level_s == "1") level = 1;
         if (level_s == "2") level = 2;
         if (level_s == "3") level = 3;
@@ -26,6 +27,27 @@ public class SceneChange : MonoBehaviour
     public void LevelFinished()
     {
         FadeToLevel(2);
+    }
+
+
+    public void menuBtnClicked()
+    {
+        FadeToLevel(1);
+    }
+
+    public void retryBtnClicked()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        int currentScene = scene.buildIndex;
+        FadeToLevel(currentScene);
+    }
+
+    public void nextBtnClicked()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        int currentScene = scene.buildIndex;
+        int nextScene = currentScene + 1;
+        FadeToLevel(nextScene);
     }
 
     public void FadeToLevel (int levelIndex)

@@ -1,18 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class SceneChange : MonoBehaviour
 {
     public Animator animator;
     private int levelToLoad;
+    int level;
 
     public void LevelBtnClicked()
     {
-        // 레벨 선택씬 -> 게임씬
-        GameObject.Find("Canvas").GetComponent<LevelManager>().BtnClicked();
-        FadeToLevel(2);
+        string level_s = EventSystem.current.currentSelectedGameObject.transform.parent.name;
+        Debug.Log(level_s);
+        if (level_s == "1") level = 1;
+        if (level_s == "2") level = 2;
+        if (level_s == "3") level = 3;
+        if (level_s == "4") level = 4;
+        if (level_s == "5") level = 5;
+
+        FadeToLevel(level + 1);
     }
 
     public void LevelFinished()

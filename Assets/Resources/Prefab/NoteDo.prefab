@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 5065050488225125187}
   - component: {fileID: 5162414538428322676}
   - component: {fileID: -1872768466542315}
-  - component: {fileID: 395113077659789555}
+  - component: {fileID: -7911011092450698168}
   m_Layer: 0
   m_Name: NoteDo
   m_TagString: Untagged
@@ -271,7 +271,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &395113077659789555
+--- !u!114 &-7911011092450698168
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4504266778931323191}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47f230d881bac5d4cae6311c94407870, type: 3}
+  m_Script: {fileID: 11500000, guid: 312ec1eb78f8aae45b83b5495888da8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nodeParticle: {fileID: 1783276646780061817, guid: 1c0520325bd5b534188c40bef406dc5c, type: 3}

@@ -24,7 +24,7 @@ public class Object_WindEffect : MonoBehaviour
         {
             Debug.Log("Trigger Check");
             //other에게 바람 효과 지속 적용
-            other.gameObject.GetComponent<Rigidbody>().AddForce(transform.up * 15f);
+            other.gameObject.GetComponent<Rigidbody>().AddForce(transform.up * 20f);
         }
     }
 }

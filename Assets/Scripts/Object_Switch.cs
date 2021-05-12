@@ -9,7 +9,7 @@ public class Object_Switch : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag=="Key")
+        if(collision.gameObject.tag=="Key" || collision.gameObject.tag=="Player")
         {
             Destroy(panel, 0f);
         }

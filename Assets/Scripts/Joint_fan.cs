@@ -13,14 +13,15 @@ public class Joint_fan : MonoBehaviour
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         isGameStarted = true;
+        defaultPosition = transform.position;
     }
+
     private void Update()
     {
         if (GameManager.isGaming)
         {
             if (isGameStarted)
             {
-                defaultPosition = transform.position;
                 isGameStarted = false;
             }
         }
@@ -29,16 +30,18 @@ public class Joint_fan : MonoBehaviour
             if (!isGameStarted) //게임이 시작된 적이 있는데 정지됬다면
             {
                 transform.position = defaultPosition;
-                transform.localScale = defaultScale;
+                //gameObject.transform.rotation = Quaternion.identity;
+                //gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero; 
+                //gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
                 isGameStarted = true;
             }
-            
         }
     }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Key")
         {
+            gameObject.GetComponent<Rigidbody>().useGravity = true;
             gameObject.GetComponent<HingeJoint>().useMotor = true;
         }
     }

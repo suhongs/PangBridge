@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI ScoreText;
 
     public float timer = 200; // 타이머
-    float time = 0;
     public TextMeshProUGUI TimerText;
 
     public GameObject[] stars; //별들을 담을 배열
@@ -48,6 +47,11 @@ public class GameManager : MonoBehaviour
 
     public GameObject StageScoreUI;
 
+    public GameObject Player;
+    private Rigidbody rb;
+    public GameObject StartButton;
+    public GameObject StopButton;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,6 +66,13 @@ public class GameManager : MonoBehaviour
 
         StageScoreUI = GameObject.Find("StageScoreUI");
         StageScoreUI.SetActive(false);
+
+        Player = GameObject.Find("Player");
+        StartButton = GameObject.Find("StartButton");
+        StopButton = GameObject.Find("StopButton");
+        Player = GameObject.Find("Player");
+        rb = Player.GetComponent<Rigidbody>();
+        StopButton.SetActive(false);
     }
 
     private void Update()
@@ -69,8 +80,27 @@ public class GameManager : MonoBehaviour
         // 타이머
         if(GameManager.isGaming)
         {
-            time += Time.deltaTime;
-            TimerText.text = (200 - ((int)time % 60)).ToString();
+            if(timer <= 0)
+            {
+                isGaming = false;
+                ResetAllSelect();
+                Player.transform.position = ResetPoint.position; //플레이어를 reset point로 이동
+                Player.transform.rotation = Quaternion.identity;
+                rb.useGravity = false; //플레이어 중력작용x
+                rb.velocity = Vector3.zero; //플레이어에게 받던 힘x
+
+                //Player.GetComponent<SphereCollider>().enabled = false; //플레이어 collider 끔
+                Player.GetComponent<SphereCollider>().isTrigger = true; //충돌은 발생하지 않더라도 겹침은 해결해야하므로
+                Player.GetComponent<Rigidbody>().isKinematic = true;    //오브젝트랑 반응 안해야하는데...
+                Player.transform.localScale = new Vector3(1, 1, 1);
+
+                InitializeStar();
+                StartButton.SetActive(true);
+                StopButton.SetActive(false);
+                Destroy(Player.gameObject.GetComponent<ConstantForce>());
+            }
+            timer -= Time.deltaTime;
+            TimerText.text = Mathf.Floor(timer).ToString();
         }
 
         if(isCleared)
@@ -97,7 +127,7 @@ public class GameManager : MonoBehaviour
         //GameObject startwo = Instantiate(newstar, new Vector3(-23.37f, -12.48f, -0.03f), newstar.transform.rotation);
         //GameObject starthree = Instantiate(newstar, new Vector3(-27.07f, -16.11f, -0.03f), newstar.transform.rotation);
 
-        time = 0;
+        timer = 200;
         TimerText.text = 200.ToString();
         currentStar = 0;
         UpdateUI();

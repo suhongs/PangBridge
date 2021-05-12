@@ -119,4 +119,9 @@ public class UI_Btns_forBB : MonoBehaviour
     {
         //gm.GetComponent<GameManager>().rotateMode = true;
     }
+
+    public void QuitBtn()
+    {
+        Application.Quit();
+    }
 }

@@ -8,6 +8,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI StageText;   // 스테이지 표시
+    public int currentStage; // 스테이지    !!!! 각 스테이지마다 Inspector에서 입력해야 함 !!!!
 
     public Transform ResetPoint; //초기화 버튼 클릭시 이동할 위치
 
@@ -78,7 +79,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         // 타이머
-        if(GameManager.isGaming)
+        if(isGaming)
         {
             if(timer <= 0)
             {
@@ -103,8 +104,16 @@ public class GameManager : MonoBehaviour
             TimerText.text = Mathf.Floor(timer).ToString();
         }
 
-        if(isCleared)
+        if (isCleared)
+        {
             StageScoreUI.SetActive(true);
+            if(!PlayerPrefs.HasKey("stage" + currentStage) || PlayerPrefs.GetInt("stage"+ currentStage) < currentStar)
+            {
+                PlayerPrefs.SetInt("stage" + currentStage, currentStar);
+                PlayerPrefs.SetInt("stage" + (currentStage + 1), 0);
+                PlayerPrefs.Save();
+            }
+        }
     }
 
     public void UpdateUI()

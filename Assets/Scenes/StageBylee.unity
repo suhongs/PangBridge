@@ -4806,6 +4806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StageText: {fileID: 173195773}
+  currentStage: 4
   ResetPoint: {fileID: 1365729179}
   startCoin: 50
   currentCoin: 0
@@ -4827,6 +4828,9 @@ MonoBehaviour:
   FirstTrigger: 0
   isCleared: 0
   StageScoreUI: {fileID: 0}
+  Player: {fileID: 0}
+  StartButton: {fileID: 0}
+  StopButton: {fileID: 0}
 --- !u!4 &944301466
 Transform:
   m_ObjectHideFlags: 0

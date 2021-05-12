@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cannon : MonoBehaviour
+public class Object_Cannon : MonoBehaviour
 {
     private GameManager gm;
     Camera cam = null;

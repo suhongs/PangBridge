@@ -2,25 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Magnet : MonoBehaviour
+public class Object_Magnet : MonoBehaviour
 {
     [SerializeField]
     public float forceFactor = 200f;
     private Rigidbody rb = null;
+    private bool isOn = false;
 
     private void FixedUpdate()
     {
-        rb.AddForce((transform.position - rb.position) * forceFactor * Time.deltaTime);
+        if (isOn)
+            rb.AddForce((transform.position - rb.position) * forceFactor * Time.deltaTime);
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if(other.tag=="Player")
         {
             rb = other.GetComponent<Rigidbody>();
+            isOn = true;
         }
     }
     private void OnTriggerExit(Collider other)
     {
         rb = null;
+        isOn = false;
     }
 }

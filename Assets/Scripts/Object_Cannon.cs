@@ -9,10 +9,12 @@ public class Object_Cannon : MonoBehaviour
     [SerializeField] GameObject CannonDir = null;
     private GameObject player = null;
     private Vector3 mouseDir;
+    private Vector3 boxColliderSize;
     private void Start()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         cam = Camera.main;
+        boxColliderSize = GetComponent<BoxCollider>().size;
     }
     private void Update()
     {
@@ -24,6 +26,7 @@ public class Object_Cannon : MonoBehaviour
         {
             if(Input.GetMouseButtonDown(0))
             {
+                Debug.Log("a");
                 player.GetComponent<Rigidbody>().velocity = CannonDir.transform.right * 20f;
                 player.GetComponent<Rigidbody>().useGravity = true;
             }
@@ -35,13 +38,13 @@ public class Object_Cannon : MonoBehaviour
         if (other.gameObject.name == "Player")
         {
             player = other.gameObject;
-            Debug.Log("trigger enter test");
 
             //플레이어 세팅 초기화
             player.GetComponent<Rigidbody>().useGravity = false; //플레이어의 중력을 끄고
             player.GetComponent<Rigidbody>().velocity = Vector3.zero;
             player.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             player.transform.position = gameObject.transform.position;
+            gameObject.GetComponent<BoxCollider>().size = new Vector3(0f, 0f, 0f);
             gm.isCannon = true;
         }
     }
@@ -49,7 +52,7 @@ public class Object_Cannon : MonoBehaviour
     {
         if (other.gameObject.name == "Player")
         {
-            Debug.Log("trigger exit test");
+            gameObject.GetComponent<BoxCollider>().size = boxColliderSize;
             gm.isCannon = false;
         }
     }

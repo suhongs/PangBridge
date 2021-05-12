@@ -21,7 +21,7 @@ public class magnet : MonoBehaviour {
     private void OnTriggerStay(Collider other)
     {
         //if the object have attractable tag
-        if (other.CompareTag("attractable"))
+        if (other.CompareTag("Player"))
         {
             //execute attract method and insert 2 variables: the rigidbody of the object that must be attracted and the rigidbody of the magnet
             attract(other.GetComponent<Rigidbody>(), GetComponent<Rigidbody>());

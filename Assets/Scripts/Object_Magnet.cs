@@ -5,26 +5,53 @@ using UnityEngine;
 public class Object_Magnet : MonoBehaviour
 {
     [SerializeField]
-    public float forceFactor = 200f;
+    public float force = 200f;
     private Rigidbody rb = null;
-    private bool isOn = false;
+    private GameManager gm = null;
+    private bool isGameStarted;
 
-    private void FixedUpdate()
+    private void Start()
     {
-        if (isOn)
-            rb.AddForce((transform.position - rb.position) * forceFactor * Time.deltaTime);
+        transform.rotation = Quaternion.Euler(-90f, 0f, 0f);
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        isGameStarted = true;
+        gameObject.GetComponent<SphereCollider>().radius = 10f;
+    }
+    private void Update()
+    {
+        if (GameManager.isGaming)
+        {
+            if (isGameStarted)
+            {
+                gameObject.GetComponent<SphereCollider>().radius = 40f;
+                isGameStarted = false;
+            }
+        }
+        else if (GameManager.isGaming == false)
+        {
+            if (!isGameStarted) //게임이 시작된 적이 있는데 정지됬다면
+            {
+                gameObject.GetComponent<SphereCollider>().radius = 10f;
+                isGameStarted = true;
+            }
+        }
     }
     private void OnTriggerStay(Collider other)
     {
         if(other.tag=="Player")
         {
             rb = other.GetComponent<Rigidbody>();
-            isOn = true;
+            Rigidbody magnetRb = gameObject.GetComponent<Rigidbody>();
+            if (rb.mass > magnetRb.mass)
+            {
+                //add force to the rigidbody of the magnet
+                magnetRb.AddForce(-(magnetRb.position - rb.position) * force);
+                //returns
+                return;
+            }
+
+            //add force to the rigidbody that must be attracted
+            rb.AddForce((magnetRb.position - rb.position) * force * rb.mass * Time.deltaTime);
         }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        rb = null;
-        isOn = false;
     }
 }

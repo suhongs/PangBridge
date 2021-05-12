@@ -60,7 +60,7 @@ public class DragObject : MonoBehaviour
                     gm.TriggerStatus = gameObject.GetComponent<BoxCollider>().isTrigger;
                     gameObject.GetComponent<BoxCollider>().isTrigger = true;
                 }
-                Debug.Log(gm.TriggerStatus);
+                //Debug.Log(gm.TriggerStatus);
             }
             catch
             {

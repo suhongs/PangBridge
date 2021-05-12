@@ -47,6 +47,12 @@ public class SceneObject_Star : MonoBehaviour
             transform.localScale = new Vector3(0, 0, 0);
             gm.currentStar++;
             gm.UpdateUI();
+            if (gameObject.tag == "Goal")
+            {
+                gm.isCleared = true;
+            }
         }
+
+        
     }
 }

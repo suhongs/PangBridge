@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     public static bool isGaming = false;
     public bool isCleared = false;   // 빨간 별 먹으면 완료
 
-    GameObject StageScoreUI;
+    public GameObject StageScoreUI;
 
     // Start is called before the first frame update
     void Start()

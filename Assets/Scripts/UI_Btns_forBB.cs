@@ -18,7 +18,6 @@ public class UI_Btns_forBB : MonoBehaviour
         Player = GameObject.Find("Player");
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         rb = Player.GetComponent<Rigidbody>();
-        StopButton.SetActive(false);
     }
 
     public void StartBtn()

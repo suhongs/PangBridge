@@ -1847,7 +1847,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00006389618, y: -0.000061035156}
+  m_AnchoredPosition: {x: 9.000923, y: -0.000061035156}
   m_SizeDelta: {x: -9.000916, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &564901671
@@ -3489,6 +3489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StageText: {fileID: 173195773}
+  currentStage: 2
   ResetPoint: {fileID: 1365729179}
   startCoin: 6
   currentCoin: 0
@@ -3510,6 +3511,9 @@ MonoBehaviour:
   FirstTrigger: 0
   isCleared: 0
   StageScoreUI: {fileID: 0}
+  Player: {fileID: 0}
+  StartButton: {fileID: 0}
+  StopButton: {fileID: 0}
 --- !u!4 &944301466
 Transform:
   m_ObjectHideFlags: 0
@@ -3925,8 +3929,8 @@ Transform:
   - {fileID: 1365729179}
   - {fileID: 1831633859}
   - {fileID: 1182955892}
-  - {fileID: 5497996}
   - {fileID: 399312128}
+  - {fileID: 5497996}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

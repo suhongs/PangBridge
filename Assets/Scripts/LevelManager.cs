@@ -16,10 +16,26 @@ public class LevelManager : MonoBehaviour
         // 1,2,3 => 스코어, 0 => 현재 스테이지, -1 => 잠김
 
         // 초기 설정
-        LevelScore = new int[] { 0, -1, -1, -1, -1 };
-
-        // 스테이지 스코어 불러옴
-         LevelScore = new int[] { 3, 2, 0, -1, -1 };
+        if (!PlayerPrefs.HasKey("stage1"))
+            LevelScore = new int[] { 0, -1, -1, -1, -1 };
+        
+        // stage1 완료 기록 보유할 때
+        else
+        {
+            // 스테이지 스코어 불러옴
+            for (int i = 0; i < 5; i++)
+            {
+                int stage = i + 1;
+                if (PlayerPrefs.HasKey("stage" + stage))
+                {
+                    LevelScore[i] = PlayerPrefs.GetInt("stage" + stage);
+                }
+                else
+                {
+                    LevelScore[i] = -1;
+                }
+            }
+        }
 
 
         for (int i=0; i < LevelScore.Length; i++)

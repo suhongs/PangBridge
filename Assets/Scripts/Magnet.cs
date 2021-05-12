@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class Magnet : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    [SerializeField]
+    public float forceFactor = 200f;
+    private Rigidbody rb = null;
 
-    private void OnTriggerStay(Collider other)
+    private void FixedUpdate()
+    {
+        rb.AddForce((transform.position - rb.position) * forceFactor * Time.deltaTime);
+    }
+    private void OnTriggerEnter(Collider other)
     {
         if(other.tag=="Player")
         {
-            other.transform.position += (transform.position - other.transform.position).normalized * Time.deltaTime * moveSpeed;
+            rb = other.GetComponent<Rigidbody>();
         }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        rb = null;
     }
 }

@@ -11,6 +11,7 @@ TagManager:
   - RotateBtn
   - Locked
   - UnLocked
+  - Key
   layers:
   - Default
   - TransparentFX

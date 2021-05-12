@@ -12,6 +12,7 @@ TagManager:
   - Locked
   - UnLocked
   - Goal
+  - Key
   layers:
   - Default
   - TransparentFX

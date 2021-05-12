@@ -18,7 +18,7 @@ public class Object_Cannon : MonoBehaviour
     }
     private void Update()
     {
-        if(gm.isCannon) //대포가 마우스 방향으로 향하게
+        if(gm.isCannon) //포구 회전
         {
             CannonDir.transform.RotateAround(transform.position, Vector3.forward, 75f * Time.deltaTime);
         }
@@ -26,19 +26,19 @@ public class Object_Cannon : MonoBehaviour
         {
             if(Input.GetMouseButtonDown(0))
             {
-                Debug.Log("a");
-                player.GetComponent<Rigidbody>().velocity = CannonDir.transform.right * 20f;
+                player.GetComponent<Rigidbody>().velocity = CannonDir.transform.forward * 20f;
+                //player.GetComponent<Rigidbody>().AddForce(Vector3.right * 20f);
                 player.GetComponent<Rigidbody>().useGravity = true;
+                StartCoroutine("Cooltime");
             }
         }
     }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Player")
         {
             player = other.gameObject;
-
             //플레이어 세팅 초기화
             player.GetComponent<Rigidbody>().useGravity = false; //플레이어의 중력을 끄고
             player.GetComponent<Rigidbody>().velocity = Vector3.zero;
@@ -52,8 +52,14 @@ public class Object_Cannon : MonoBehaviour
     {
         if (other.gameObject.name == "Player")
         {
-            gameObject.GetComponent<BoxCollider>().size = boxColliderSize;
-            gm.isCannon = false;
+            
+            
         }
+    }
+    IEnumerator Cooltime()
+    {
+        gameObject.GetComponent<BoxCollider>().size = boxColliderSize;
+        gm.isCannon = false;
+        yield return new WaitForSeconds(2f);
     }
 }

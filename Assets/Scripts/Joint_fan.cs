@@ -8,12 +8,14 @@ public class Joint_fan : MonoBehaviour
     private Vector3 defaultPosition;
     private Vector3 defaultScale;
     private bool isGameStarted;
+    private Rigidbody rb;
 
     private void Start()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         isGameStarted = true;
         defaultPosition = transform.position;
+        rb = gameObject.GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -23,6 +25,10 @@ public class Joint_fan : MonoBehaviour
             if (isGameStarted)
             {
                 isGameStarted = false;
+                gameObject.GetComponent<HingeJoint>().useMotor = true;
+                rb.isKinematic = false;
+                if (defaultPosition != gameObject.transform.position)
+                    defaultPosition = gameObject.transform.position;
             }
         }
         else if (GameManager.isGaming == false)
@@ -30,19 +36,13 @@ public class Joint_fan : MonoBehaviour
             if (!isGameStarted) //게임이 시작된 적이 있는데 정지됬다면
             {
                 transform.position = defaultPosition;
-                //gameObject.transform.rotation = Quaternion.identity;
-                //gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero; 
-                //gameObject.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+                gameObject.transform.rotation = Quaternion.identity;
+                rb.velocity = Vector3.zero; 
+                rb.angularVelocity = Vector3.zero;
+                gameObject.GetComponent<HingeJoint>().useMotor = false;
+                rb.isKinematic = true;
                 isGameStarted = true;
             }
-        }
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Key")
-        {
-            //gameObject.GetComponent<Rigidbody>().useGravity = true;
-            //gameObject.GetComponent<HingeJoint>().useMotor = true;
         }
     }
 }

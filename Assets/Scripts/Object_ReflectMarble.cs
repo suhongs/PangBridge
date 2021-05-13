@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Object_ReflectMarble : MonoBehaviour
 {
+    private GameObject nodeParticle;
     // Start is called before the first frame update
     void Start()
     {
-        
+        nodeParticle = Resources.Load("Prefab/Particles/Star") as GameObject;
     }
 
     // Update is called once per frame
@@ -20,6 +21,9 @@ public class Object_ReflectMarble : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            Vector3 particlepoint = other.contacts[0].point;
+            Instantiate(nodeParticle, new Vector3(particlepoint.x, particlepoint.y, -1f), transform.rotation);
+
             Vector3 colpoint = other.transform.position;
 
             Rigidbody rigid = other.gameObject.GetComponent<Rigidbody>();

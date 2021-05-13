@@ -8,12 +8,16 @@ public class Object_Key : MonoBehaviour
     private Vector3 defaultPosition;
     private Vector3 defaultScale;
     private bool isGameStarted;
+    private SphereCollider sc;
+    private Rigidbody rb;
 
     void Start()
     {
         isGameStarted = true;
         defaultScale = transform.localScale;
         defaultPosition = transform.position;
+        sc = gameObject.GetComponent<SphereCollider>();
+        rb = gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -23,8 +27,9 @@ public class Object_Key : MonoBehaviour
         {
             if (isGameStarted)
             {
-                gameObject.GetComponent<Rigidbody>().useGravity = true;
+                rb.useGravity = true;
                 isGameStarted = false;
+                sc.isTrigger = false;
             }
         }
         else if (GameManager.isGaming == false)
@@ -33,8 +38,11 @@ public class Object_Key : MonoBehaviour
             {
                 transform.position = defaultPosition;
                 transform.localScale = defaultScale;
-                gameObject.GetComponent<Rigidbody>().useGravity = false;
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+                rb.useGravity = false;
                 isGameStarted = true;
+                sc.isTrigger = true;
             }
             defaultPosition = transform.position; //게임 중이 아닐 땐 지속적으로 위치 갱신
         }

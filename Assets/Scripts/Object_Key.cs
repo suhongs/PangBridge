@@ -30,6 +30,7 @@ public class Object_Key : MonoBehaviour
                 rb.useGravity = true;
                 isGameStarted = false;
                 sc.isTrigger = false;
+                rb.isKinematic = false;
             }
         }
         else if (GameManager.isGaming == false)
@@ -43,6 +44,7 @@ public class Object_Key : MonoBehaviour
                 rb.useGravity = false;
                 isGameStarted = true;
                 sc.isTrigger = true;
+                rb.isKinematic = true;
             }
             defaultPosition = transform.position; //게임 중이 아닐 땐 지속적으로 위치 갱신
         }

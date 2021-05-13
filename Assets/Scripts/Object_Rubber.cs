@@ -16,21 +16,19 @@ public class Object_Rubber : MonoBehaviour
     {
         if (GameManager.isGaming)
         {
-            if (transform.localScale.x > 9)
+            if (transform.localScale.x > 3)
                 dir = false;
-            if (transform.localScale.x < 3)
+            if (transform.localScale.x < 1)
                 dir = true;
 
 
             if (dir)
             {
                 transform.localScale += new Vector3(1, 0, 0) * 0.005f;
-                transform.localScale -= new Vector3(0, 1, 0) * 0.0005f;
             }
             else
             {
                 transform.localScale -= new Vector3(1, 0, 0) * 0.005f;
-                transform.localScale += new Vector3(0, 1, 0) * 0.0005f;
             }
         }
     }

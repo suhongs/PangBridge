@@ -10,6 +10,7 @@ public class Object_Switch : MonoBehaviour
     private Vector3 defaultScale;
     private Vector3 paneldefaultPosition;
     private Vector3 paneldefaultScale;
+    private Rigidbody rb;
     private bool isGameStarted;
 
     void Start()
@@ -19,6 +20,7 @@ public class Object_Switch : MonoBehaviour
         defaultPosition = transform.position;
         paneldefaultPosition = panel.transform.position;
         paneldefaultScale = panel.transform.localScale;
+        rb = gameObject.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -29,7 +31,7 @@ public class Object_Switch : MonoBehaviour
             if (isGameStarted)
             {
                 isGameStarted = false;
-                
+                rb.isKinematic = true;
             }
         }
         else if (GameManager.isGaming == false)
@@ -41,6 +43,7 @@ public class Object_Switch : MonoBehaviour
                 panel.transform.position = paneldefaultPosition;
                 panel.transform.localScale = paneldefaultScale;
                 isGameStarted = true;
+                rb.isKinematic = false;
                 if (panel.activeSelf == false)
                     panel.SetActive(true);
             }

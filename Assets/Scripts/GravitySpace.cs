@@ -9,7 +9,7 @@ public class GravitySpace : MonoBehaviour
         if(other.gameObject.name == "Player")
         {
             other.gameObject.AddComponent<ConstantForce>();
-            other.gameObject.GetComponent<ConstantForce>().force = new Vector3(0f, 12f, 0f);
+            other.gameObject.GetComponent<ConstantForce>().force = new Vector3(0f, 15f, 0f);
         }
     }
 

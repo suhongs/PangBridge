@@ -8,6 +8,8 @@ public class Object_Switch : MonoBehaviour
     GameObject panel; //사라지게 할 블럭
     private Vector3 defaultPosition;
     private Vector3 defaultScale;
+    private Vector3 paneldefaultPosition;
+    private Vector3 paneldefaultScale;
     private bool isGameStarted;
 
     void Start()
@@ -15,6 +17,8 @@ public class Object_Switch : MonoBehaviour
         isGameStarted = true;
         defaultScale = transform.localScale;
         defaultPosition = transform.position;
+        paneldefaultPosition = panel.transform.position;
+        paneldefaultScale = panel.transform.localScale;
     }
 
     // Update is called once per frame
@@ -25,6 +29,7 @@ public class Object_Switch : MonoBehaviour
             if (isGameStarted)
             {
                 isGameStarted = false;
+                
             }
         }
         else if (GameManager.isGaming == false)
@@ -33,7 +38,11 @@ public class Object_Switch : MonoBehaviour
             {
                 transform.position = defaultPosition;
                 transform.localScale = defaultScale;
+                panel.transform.position = paneldefaultPosition;
+                panel.transform.localScale = paneldefaultScale;
                 isGameStarted = true;
+                if (panel.activeSelf == false)
+                    panel.SetActive(true);
             }
             defaultPosition = transform.position; //게임 중이 아닐 땐 지속적으로 위치 갱신
         }
@@ -42,8 +51,7 @@ public class Object_Switch : MonoBehaviour
     {
         if(collision.gameObject.tag=="Key" || collision.gameObject.tag=="Player")
         {
-            Destroy(panel, 0f);
-            Destroy(gameObject, 0f);
+            panel.SetActive(false);
         }
     }
 }

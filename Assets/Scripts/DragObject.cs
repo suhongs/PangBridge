@@ -64,13 +64,18 @@ public class DragObject : MonoBehaviour
             {
                 if (gm.FirstTrigger)
                 {
-                    gameObject.GetComponent<SphereCollider>().isTrigger = true;
+                    if(gameObject.GetComponent<SphereCollider>() != null)
+                        gameObject.GetComponent<SphereCollider>().isTrigger = true;
+                    else if (gameObject.GetComponent<CapsuleCollider>() != null)
+                        gameObject.GetComponent<CapsuleCollider>().isTrigger = true;
                     gm.FirstTrigger = false;
                 }
                 else
                 {
-                    gm.TriggerStatus = gameObject.GetComponent<SphereCollider>().isTrigger;
-                    gameObject.GetComponent<SphereCollider>().isTrigger = true;
+                    if (gameObject.GetComponent<SphereCollider>() != null)
+                        gm.TriggerStatus = gameObject.GetComponent<SphereCollider>().isTrigger;
+                    else if (gameObject.GetComponent<CapsuleCollider>() != null)
+                        gm.TriggerStatus = gameObject.GetComponent<CapsuleCollider>().isTrigger;
                 }
             }
 
@@ -150,7 +155,15 @@ public class DragObject : MonoBehaviour
             }
             catch
             {
-                gameObject.GetComponent<SphereCollider>().isTrigger = gm.TriggerStatus;
+                if (gameObject.GetComponent<SphereCollider>() != null)
+                {
+                    gameObject.GetComponent<SphereCollider>().isTrigger = gm.TriggerStatus;
+                }
+                    
+                else if(gameObject.GetComponent<CapsuleCollider>() != null)
+                {
+                    gameObject.GetComponent<CapsuleCollider>().isTrigger = gm.TriggerStatus;
+                }
             }
 
         }

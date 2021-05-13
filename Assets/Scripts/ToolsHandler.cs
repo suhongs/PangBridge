@@ -148,9 +148,19 @@ public class ToolsHandler : MonoBehaviour
             }
             catch
             {
-                gm.TriggerStatus = tool.gameObject.GetComponent<SphereCollider>().isTrigger;
-                gm.FirstTrigger = true;
-                tool.gameObject.GetComponent<SphereCollider>().isTrigger = true;
+                if(tool.gameObject.GetComponent<SphereCollider>() != null)
+                {
+                    gm.TriggerStatus = tool.gameObject.GetComponent<SphereCollider>().isTrigger;
+                    gm.FirstTrigger = true;
+                    tool.gameObject.GetComponent<SphereCollider>().isTrigger = true;
+                }
+                else if (tool.gameObject.GetComponent<CapsuleCollider>() != null)
+                {
+                    gm.TriggerStatus = tool.gameObject.GetComponent<CapsuleCollider>().isTrigger;
+                    gm.FirstTrigger = true;
+                    tool.gameObject.GetComponent<CapsuleCollider>().isTrigger = true;
+                }
+
             }
             toolrigid = tool.gameObject.GetComponent<Rigidbody>();
             // 리셋 버튼 누르면 태그가 Tool인 오브젝트 없애고 돈 환불처리 시키기

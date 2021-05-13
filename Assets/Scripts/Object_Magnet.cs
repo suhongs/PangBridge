@@ -23,7 +23,7 @@ public class Object_Magnet : MonoBehaviour
         {
             if (isGameStarted)
             {
-                gameObject.GetComponent<SphereCollider>().radius = 40f;
+                gameObject.GetComponent<SphereCollider>().radius = 50f;
                 isGameStarted = false;
             }
         }

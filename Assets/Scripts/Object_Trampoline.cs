@@ -22,7 +22,9 @@ public class Object_Trampoline : MonoBehaviour
         Vector3 inNormal = Vector3.Normalize(
             transform.position - rigid.transform.position);
         inNormal.z = 0;
-        float force = Mathf.Sqrt(rigid.velocity.x * rigid.velocity.x + rigid.velocity.y * rigid.velocity.y) * 50f;
-        rigid.AddForce(-inNormal * force);
+        //float force = Mathf.Sqrt(rigid.velocity.x * rigid.velocity.x + rigid.velocity.y * rigid.velocity.y) * 50f;
+        //rigid.AddForce(-inNormal * force);
+
+        rigid.AddForce(-inNormal * 400f);
     }
 }

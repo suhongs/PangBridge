@@ -3268,6 +3268,7 @@ MonoBehaviour:
   TriggerStatus: 0
   FirstTrigger: 0
   isCleared: 0
+  isFreeMode: 0
   StageScoreUI: {fileID: 0}
   Player: {fileID: 0}
   StartButton: {fileID: 0}
@@ -7381,7 +7382,7 @@ MonoBehaviour:
     cost: 5
     image: {fileID: 0}
   - name: Magnet
-    prefab_name: MagneticSphere
+    prefab_name: magnet
     cost: 10
     image: {fileID: 0}
   - name: NoteDo

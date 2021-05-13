@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class Object_Cannon : MonoBehaviour
 {
+    private AudioSource audiosource;
     private GameManager gm;
     Camera cam = null;
     [SerializeField] GameObject CannonDir = null;
     private GameObject player = null;
+    private GameObject effectpos;
+    
+    [SerializeField]
+    GameObject shootEffect;
     private Vector3 mouseDir;
     private Vector3 boxColliderSize;
     private bool isGameStarted;
@@ -18,6 +23,8 @@ public class Object_Cannon : MonoBehaviour
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         cam = Camera.main;
         boxColliderSize = GetComponent<BoxCollider>().size;
+        audiosource = GetComponent<AudioSource>();
+        effectpos = transform.GetChild(1).gameObject;
     }
     private void Update()
     {
@@ -33,11 +40,14 @@ public class Object_Cannon : MonoBehaviour
                 if(player != null)
                 {
                     player.GetComponent<Rigidbody>().velocity = CannonDir.transform.forward * 20f;
-                    //player.GetComponent<Rigidbody>().AddForce(Vector3.right * 20f);
+                    
                     player.GetComponent<Rigidbody>().useGravity = true;
-                    StartCoroutine("Cooltime");
+                    //StartCoroutine("Cooltime");
                     gameObject.GetComponent<BoxCollider>().size = boxColliderSize;
                     gm.isCannon = false;
+
+                    StartCoroutine("AddEffect");
+                    Instantiate(shootEffect, effectpos.transform.position, Quaternion.identity);
                 }
             }
         }
@@ -65,6 +75,7 @@ public class Object_Cannon : MonoBehaviour
     {
         if (other.gameObject.name == "Player")
         {
+            audiosource.Play(); //사운드 실행
             player = other.gameObject;
             //플레이어 세팅 초기화
             player.GetComponent<Rigidbody>().useGravity = false; //플레이어의 중력을 끄고
@@ -76,6 +87,11 @@ public class Object_Cannon : MonoBehaviour
         }
     }
     IEnumerator Cooltime()
+    {
+        
+        yield return new WaitForSeconds(2f);
+    }
+    IEnumerator AddEffect()
     {
         
         yield return new WaitForSeconds(2f);

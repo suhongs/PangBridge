@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SceneObject_Star : MonoBehaviour
 {
+    private AudioSource audiosource;
     private GameManager gm;
     private Vector3 defaultPosition;
     private Vector3 defaultScale;
@@ -11,7 +12,8 @@ public class SceneObject_Star : MonoBehaviour
     private bool isGameStarted;
 
     private void Start()
-    {
+    { 
+        audiosource = GetComponent<AudioSource>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         isGameStarted = true;
         counted = false;
@@ -43,12 +45,14 @@ public class SceneObject_Star : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player") && !counted)
         {
+            audiosource.Play();
             counted = true;
             transform.localScale = new Vector3(0, 0, 0);
             gm.currentStar++;
             gm.UpdateUI();
             if (gameObject.tag == "Goal")
             {
+                audiosource.Play();
                 gm.isCleared = true;
             }
         }

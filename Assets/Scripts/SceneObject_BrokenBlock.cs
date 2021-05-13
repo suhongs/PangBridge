@@ -37,7 +37,7 @@ public class SceneObject_BrokenBlock : MonoBehaviour
                 transform.position = defaultPosition;
                 transform.localScale = defaultScale;
                 gameObject.GetComponent<BoxCollider>().isTrigger = false;
-                gameObject.GetComponent<MeshRenderer>().material = Resources.Load("Material/BlockBreakBorder") as Material;
+                gameObject.GetComponent<MeshRenderer>().material = Resources.Load("Material/Objecj_BBB") as Material;
                 collisioncheck = 0;
                 isGameStarted = true;
             }

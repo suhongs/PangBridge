@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Object_DualJoint : MonoBehaviour
 {
+    private GameManager gm;
+
     private Quaternion defaultRotationOne;
     private Quaternion defaultRotationTwo;
 
@@ -11,6 +13,7 @@ public class Object_DualJoint : MonoBehaviour
     private Vector3 defaultPositionTwo;
 
     private bool isGameStarted;
+    private float hingevalue;
 
     private GameObject CubeOne;
     private GameObject CubeTwo;
@@ -19,6 +22,9 @@ public class Object_DualJoint : MonoBehaviour
     void Start()
     {
         isGameStarted = true;
+        hingevalue = 1;
+
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         //최초 배치 시 
         //3번째 / 4번째 아이템의 Position / Rotation 저장
         CubeOne = transform.GetChild(2).gameObject;
@@ -42,6 +48,14 @@ public class Object_DualJoint : MonoBehaviour
                 CubeTwo.GetComponent<Rigidbody>().isKinematic = false;
                 isGameStarted = false;
             }
+
+            if(Input.GetMouseButtonDown(0) && gm.isCannon == false)
+            {
+                CubeOne.GetComponent<HingeJoint>().axis = new Vector3(0, hingevalue, 0);
+                CubeTwo.GetComponent<HingeJoint>().axis = new Vector3(0, -hingevalue, 0);
+
+                hingevalue = -hingevalue;
+            }
         }
         else if (GameManager.isGaming == false)
         {
@@ -53,6 +67,9 @@ public class Object_DualJoint : MonoBehaviour
                 CubeTwo.transform.localPosition = defaultPositionTwo;
                 CubeTwo.transform.localRotation = defaultRotationTwo;
 
+                CubeOne.GetComponent<HingeJoint>().axis = new Vector3(0, -1, 0);
+                CubeTwo.GetComponent<HingeJoint>().axis = new Vector3(0, 1, 0);
+                hingevalue = 1;
 
                 CubeOne.GetComponent<Rigidbody>().isKinematic = true;
                 CubeTwo.GetComponent<Rigidbody>().isKinematic = true;

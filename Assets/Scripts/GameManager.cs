@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
         // 타이머
         if(isGaming)
         {
-            if(timer <= 0)
+            if(Player.transform.position.y < -33.0f || timer <= 0)
             {
                 isGaming = false;
                 ResetAllSelect();

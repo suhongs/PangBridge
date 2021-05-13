@@ -24,17 +24,18 @@ public class Object_Ballon : MonoBehaviour
                 defaultPosition = transform.position;
                 isFirst = false;
             }
-            transform.position += new Vector3(0, 1, 0) * 0.005f;
+            transform.Translate(new Vector3(0, 0.002f, 0));
         }
         else if (GameManager.isGaming == false)
         {
-
+            transform.Translate(new Vector3(0, 0, 0));
             if (!isFirst)
             {
                 transform.position = defaultPosition;
                 isFirst = true;
             }
             defaultPosition = transform.position;
+
         }
     }
 }

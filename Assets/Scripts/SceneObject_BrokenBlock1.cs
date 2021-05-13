@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Object_BrokenBlock : MonoBehaviour
+public class SceneObject_BrokenBlock1 : MonoBehaviour
 {
     private int collisioncheck;
     private Vector3 defaultPosition;
     private Vector3 defaultScale;
     private bool isGameStarted;
-    private GameObject nodeParticleOne;
-    private GameObject nodeParticleTwo;
-    private GameObject nodeParticleThree;
 
     //3회 hit시 사라지는 block
 
@@ -20,10 +17,6 @@ public class Object_BrokenBlock : MonoBehaviour
         collisioncheck = 0;
         isGameStarted = true;
         defaultScale = transform.localScale;
-
-        nodeParticleOne = Resources.Load("Prefab/Particles/Cube_Collision_Blue") as GameObject;
-        nodeParticleTwo = Resources.Load("Prefab/Particles/Cube_Collision_Yellow") as GameObject;
-        nodeParticleThree = Resources.Load("Prefab/Particles/Cube_Collision_Red") as GameObject;
     }
 
     // Update is called once per frame
@@ -52,32 +45,21 @@ public class Object_BrokenBlock : MonoBehaviour
         }
     }
 
-    
+
     void OnCollisionEnter(Collision other)
     {
-    Debug.Log("collision");
+        Debug.Log("collision");
         if (other.gameObject.tag == "Player")
         {
-            //Vector3 colpoint = other.transform.position;
-            Vector3 colpoint = other.contacts[0].point;
-            //Quaternion colrotation = Quaternion.FromToRotation(-)
-
             collisioncheck++;
             //collision이 횟수에 따라 파랑->빨강->파괴 순서로 진행
             if (collisioncheck == 1)
             {
-                gameObject.GetComponent<MeshRenderer>().material.color = Color.yellow;
-                Instantiate(nodeParticleTwo, new Vector3(colpoint.x, colpoint.y, -1), transform.rotation);
-            }
-            else if (collisioncheck == 2)
-            {
                 gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
-                Instantiate(nodeParticleThree, new Vector3(colpoint.x, colpoint.y, -1), transform.rotation);
             }
-            if (collisioncheck > 2)
+            else if (collisioncheck > 1)
             {
                 gameObject.GetComponent<BoxCollider>().isTrigger = true; //접촉 시 통과되도록
-                Instantiate(nodeParticleOne, new Vector3(colpoint.x, colpoint.y, -1), transform.rotation);
                 transform.localScale = new Vector3(0, 0, 0);
                 //gameObject.GetComponent<BoxCollider>().isTrigger = false;
             }

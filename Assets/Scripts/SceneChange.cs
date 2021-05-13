@@ -20,13 +20,21 @@ public class SceneChange : MonoBehaviour
         if (level_s == "3") level = 3;
         if (level_s == "4") level = 4;
         if (level_s == "5") level = 5;
-
+        if (level_s == "6") level = 6;
+        if (level_s == "7") level = 7;
+        //if (level_s == "8") level = 8;
+        //if (level_s == "9") level = 9;
         FadeToLevel(level + 1);
     }
 
     public void LevelFinished()
     {
         FadeToLevel(2);
+    }
+
+    public void FreeModeBtn()
+    {
+        FadeToLevel(-1);
     }
 
 
@@ -59,6 +67,11 @@ public class SceneChange : MonoBehaviour
 
     public void OnFadeComplete()
     {
-        SceneManager.LoadScene(levelToLoad);
+        if(levelToLoad == -1)
+        {
+            SceneManager.LoadScene("FreeMode");
+        }
+        else
+            SceneManager.LoadScene(levelToLoad);
     }
 }

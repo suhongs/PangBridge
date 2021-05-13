@@ -61,6 +61,12 @@ public class GameManager : MonoBehaviour
         CurrentCoinText.text = currentCoin+"$";
         ScoreText.text = currentStar + "/" + maxStar;
         TimerText.text = timer.ToString();
+        if(currentStage == -1)
+        {
+            StageText.text = "FREE MODE";
+        }
+        else
+            StageText.text = "STAGE " + currentStage;
 
         ToolUI = GameObject.FindWithTag("ToolUI");
         ToolUI.SetActive(false);

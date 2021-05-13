@@ -1297,6 +1297,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e15c34580c2d9f54588d4107f50b3161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gm: {fileID: 0}
+  canvas: {fileID: 0}
+  ToolUI: {fileID: 0}
+  dragOffset: {x: 0, y: 0}
 --- !u!114 &1122694949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1979,6 +1983,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e3a677907f1b4d428090065c4edfd08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StartColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1574591564
 GameObject:
   m_ObjectHideFlags: 0
@@ -2090,6 +2095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e3a677907f1b4d428090065c4edfd08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StartColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1615118738
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,8 @@ public class SceneObject_BrokenBlock1 : MonoBehaviour
     private Vector3 defaultPosition;
     private Vector3 defaultScale;
     private bool isGameStarted;
+    private GameObject nodeParticleOne;
+    private GameObject nodeParticleThree;
 
     //3회 hit시 사라지는 block
 
@@ -17,6 +19,9 @@ public class SceneObject_BrokenBlock1 : MonoBehaviour
         collisioncheck = 0;
         isGameStarted = true;
         defaultScale = transform.localScale;
+
+        nodeParticleOne = Resources.Load("Prefab/Particles/Cube_Collision_Blue") as GameObject;
+        nodeParticleThree = Resources.Load("Prefab/Particles/Cube_Collision_Red") as GameObject;
     }
 
     // Update is called once per frame
@@ -52,14 +57,17 @@ public class SceneObject_BrokenBlock1 : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             collisioncheck++;
+            Vector3 colpoint = other.contacts[0].point;
             //collision이 횟수에 따라 파랑->빨강->파괴 순서로 진행
             if (collisioncheck == 1)
             {
                 gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
+                Instantiate(nodeParticleThree, new Vector3(colpoint.x, colpoint.y, -1), transform.rotation);
             }
             else if (collisioncheck > 1)
             {
                 gameObject.GetComponent<BoxCollider>().isTrigger = true; //접촉 시 통과되도록
+                Instantiate(nodeParticleOne, new Vector3(colpoint.x, colpoint.y, -1), transform.rotation);
                 transform.localScale = new Vector3(0, 0, 0);
                 //gameObject.GetComponent<BoxCollider>().isTrigger = false;
             }

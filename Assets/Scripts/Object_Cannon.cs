@@ -10,6 +10,9 @@ public class Object_Cannon : MonoBehaviour
     private GameObject player = null;
     private Vector3 mouseDir;
     private Vector3 boxColliderSize;
+    private bool isGameStarted;
+    private Rigidbody rb;
+
     private void Start()
     {
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -27,10 +30,33 @@ public class Object_Cannon : MonoBehaviour
         {
             if(Input.GetMouseButtonDown(0))
             {
-                player.GetComponent<Rigidbody>().velocity = CannonDir.transform.forward * 20f;
-                //player.GetComponent<Rigidbody>().AddForce(Vector3.right * 20f);
-                player.GetComponent<Rigidbody>().useGravity = true;
-                StartCoroutine("Cooltime");
+                if(player != null)
+                {
+                    player.GetComponent<Rigidbody>().velocity = CannonDir.transform.forward * 20f;
+                    //player.GetComponent<Rigidbody>().AddForce(Vector3.right * 20f);
+                    player.GetComponent<Rigidbody>().useGravity = true;
+                    StartCoroutine("Cooltime");
+                    gameObject.GetComponent<BoxCollider>().size = boxColliderSize;
+                    gm.isCannon = false;
+                }
+            }
+        }
+
+        if (GameManager.isGaming)
+        {
+            if (isGameStarted)
+            {
+                isGameStarted = false;
+            }
+        }
+        else if (GameManager.isGaming == false)
+        {
+            if (!isGameStarted) //게임이 시작된 적이 있는데 정지됬다면
+            {
+                gameObject.transform.rotation = Quaternion.identity;
+                isGameStarted = true;
+                gameObject.GetComponent<BoxCollider>().size = boxColliderSize;
+                gm.isCannon = false;
             }
         }
     }
@@ -51,8 +77,7 @@ public class Object_Cannon : MonoBehaviour
     }
     IEnumerator Cooltime()
     {
-        gameObject.GetComponent<BoxCollider>().size = boxColliderSize;
-        gm.isCannon = false;
+        
         yield return new WaitForSeconds(2f);
     }
 }

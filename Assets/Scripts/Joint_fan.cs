@@ -41,8 +41,8 @@ public class Joint_fan : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "Key")
         {
-            gameObject.GetComponent<Rigidbody>().useGravity = true;
-            gameObject.GetComponent<HingeJoint>().useMotor = true;
+            //gameObject.GetComponent<Rigidbody>().useGravity = true;
+            //gameObject.GetComponent<HingeJoint>().useMotor = true;
         }
     }
 }

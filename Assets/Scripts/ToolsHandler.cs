@@ -127,7 +127,7 @@ public class ToolsHandler : MonoBehaviour
 
         if (!btnClicked)
         {
-            if(gm.currentCoin < int.Parse(tempBtn.transform.Find("Cost").GetComponent<Text>().text))
+            if(!gm.isFreeMode && gm.currentCoin < int.Parse(tempBtn.transform.Find("Cost").GetComponent<Text>().text))
             {
                 return;
             }

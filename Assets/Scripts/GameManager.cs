@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
     public static bool isGaming = false;
     public bool isCleared = false;   // 빨간 별 먹으면 완료
 
+    public bool isFreeMode = false;
+
     public GameObject StageScoreUI;
 
     public GameObject Player;
@@ -57,16 +59,21 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         if (isGaming) isGaming = false;
+        if (currentStage == -1)
+        {
+            StageText.text = "FREE MODE";
+            isFreeMode = true;
+            GameObject.Find("Score").SetActive(false);
+            GameObject.Find("Timer").SetActive(false);
+            GameObject.Find("Money").SetActive(false);
+        }
+        else
+            StageText.text = "STAGE " + currentStage;
         currentCoin = startCoin;
         CurrentCoinText.text = currentCoin+"$";
         ScoreText.text = currentStar + "/" + maxStar;
         TimerText.text = timer.ToString();
-        if(currentStage == -1)
-        {
-            StageText.text = "FREE MODE";
-        }
-        else
-            StageText.text = "STAGE " + currentStage;
+        
 
         ToolUI = GameObject.FindWithTag("ToolUI");
         ToolUI.SetActive(false);
@@ -85,7 +92,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         // 타이머
-        if(isGaming)
+        if(isGaming && !isFreeMode)
         {
             if(timer <= 0)
             {

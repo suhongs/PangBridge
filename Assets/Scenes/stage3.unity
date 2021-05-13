@@ -3220,6 +3220,10 @@ MonoBehaviour:
     prefab_name: Balloon
     cost: 1
     image: {fileID: 0}
+  - name: Trampoline
+    prefab_name: Trampoline
+    cost: 5
+    image: {fileID: 0}
 --- !u!95 &1035058275
 Animator:
   serializedVersion: 3

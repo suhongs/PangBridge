@@ -7428,6 +7428,10 @@ MonoBehaviour:
     prefab_name: ReflectMarble
     cost: 1
     image: {fileID: 0}
+  - name: Trampoline
+    prefab_name: Trampoline
+    cost: 5
+    image: {fileID: 0}
 --- !u!1 &1826392109
 GameObject:
   m_ObjectHideFlags: 0

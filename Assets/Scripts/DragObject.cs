@@ -15,8 +15,6 @@ public class DragObject : MonoBehaviour
 
     public Color StartColor;
     
-    
-    
 
     private void Start()
     {

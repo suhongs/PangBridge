@@ -21,6 +21,7 @@ public class Object_Cannon : MonoBehaviour
         if(gm.isCannon) //포구 회전
         {
             CannonDir.transform.RotateAround(transform.position, Vector3.forward, 75f * Time.deltaTime);
+
         }
         if(gm.isCannon)
         {
@@ -46,14 +47,6 @@ public class Object_Cannon : MonoBehaviour
             player.transform.position = gameObject.transform.position;
             gameObject.GetComponent<BoxCollider>().size = new Vector3(0f, 0f, 0f);
             gm.isCannon = true;
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.name == "Player")
-        {
-            
-            
         }
     }
     IEnumerator Cooltime()

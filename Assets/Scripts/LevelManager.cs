@@ -17,7 +17,7 @@ public class LevelManager : MonoBehaviour
         // 1,2,3 => 스코어, 0 => 현재 스테이지, -1 => 잠김
 
         // 초기 설정
-        LevelScore = new int[] { 0, -1, -1, -1, -1, -1, -1, -1, -1};
+        LevelScore = new int[] { 0, -1, -1, -1, -1, -1, -1, -1, -1, -1};
 
         // 스테이지 스코어 불러옴
         for (int i = 0; i < LevelScore.Length; i++)

@@ -2993,7 +2993,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 850103296}
   m_HandleRect: {fileID: 850103295}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4093,7 +4093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StageText: {fileID: 1776255889}
-  currentStage: 3
+  currentStage: 8
   ResetPoint: {fileID: 1301591377}
   startCoin: 50
   currentCoin: 0

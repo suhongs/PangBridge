@@ -2226,7 +2226,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000030517578, y: -0.000061035156}
+  m_AnchoredPosition: {x: 9.000957, y: -0.000061035156}
   m_SizeDelta: {x: -9.000916, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &564901671
@@ -4374,7 +4374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StageText: {fileID: 173195773}
-  currentStage: 5
+  currentStage: 9
   ResetPoint: {fileID: 1365729179}
   startCoin: 20
   currentCoin: 13
@@ -9626,7 +9626,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6180619094145256280, guid: 4792078ae671e1b42ac5563e8cf60825, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 0.93552
       objectReference: {fileID: 0}
     - target: {fileID: 6180619094145256280, guid: 4792078ae671e1b42ac5563e8cf60825, type: 3}
       propertyPath: m_LocalScale.z
@@ -9638,7 +9638,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6180619094145256280, guid: 4792078ae671e1b42ac5563e8cf60825, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -11.1
+      value: -11.416
       objectReference: {fileID: 0}
     - target: {fileID: 6180619094145256280, guid: 4792078ae671e1b42ac5563e8cf60825, type: 3}
       propertyPath: m_LocalPosition.z

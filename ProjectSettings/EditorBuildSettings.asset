@@ -36,6 +36,12 @@ EditorBuildSettings:
     path: Assets/Scenes/StageBylee2.unity
     guid: f2dfdd73c47fe594096c84b10119b376
   - enabled: 1
+    path: Assets/Scenes/Han_ver3.unity
+    guid: 2a5e7faf861c83b4dbdb35d26d12fdb8
+  - enabled: 1
+    path: Assets/Scenes/Han_ver4.unity
+    guid: 49f0d13321a4f3249832d0d289d65af3
+  - enabled: 1
     path: Assets/Scenes/FreeMode.unity
     guid: fd32c6bd46da62b4494078ce3549a0fe
   m_configObjects: {}

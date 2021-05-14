@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Object_Switch : MonoBehaviour
 {
+    private AudioSource audiosource;
+
     [SerializeField]
     GameObject panel; //사라지게 할 블럭
     private Vector3 defaultPosition;
@@ -21,6 +23,7 @@ public class Object_Switch : MonoBehaviour
 
     void Start()
     {
+        audiosource = GetComponent<AudioSource>();
         isPressed = false;
         isGameStarted = true;
         defaultScale = transform.localScale;
@@ -44,7 +47,7 @@ originPos1 = transform.GetChild(0).position;
             if (isGameStarted)
             {
                 isGameStarted = false;
-                rb.isKinematic = true;
+                rb.isKinematic = true;              // rb 누구꺼??
             }
         }
         else if (GameManager.isGaming == false)
@@ -77,6 +80,7 @@ originPos1 = transform.GetChild(0).position;
                 transform.position = newPos2;
                 GetComponent<MeshRenderer>().material.color = new Color(0.354135f, 0.7735849f, 0.1058206f, 1f);
                 isPressed = true;
+                audiosource.Play();
             }
             panel.SetActive(false);
         }

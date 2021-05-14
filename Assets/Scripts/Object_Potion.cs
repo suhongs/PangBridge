@@ -9,6 +9,8 @@ public class Object_Potion : MonoBehaviour
     private Vector3 defaultScale;
     private bool counted;
     private bool isGameStarted;
+    private AudioSource audiosource;
+
 
     private void Start()
     {
@@ -16,6 +18,7 @@ public class Object_Potion : MonoBehaviour
         isGameStarted = true;
         counted = false;
         defaultScale = transform.localScale;
+        audiosource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -49,6 +52,8 @@ public class Object_Potion : MonoBehaviour
             other.gameObject.transform.localScale = new Vector3(originalScale.x * 0.5f, originalScale.y * 0.5f, originalScale.z * 0.5f);
             Vector3 originPosition = other.transform.localPosition;
             other.gameObject.transform.localPosition = new Vector3(originPosition.x, originPosition.y, 0);
+            audiosource.Play();
+
         }
     }
 }

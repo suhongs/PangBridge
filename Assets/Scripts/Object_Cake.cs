@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Object_Cake : MonoBehaviour
 {
+    private AudioSource audiosource;
     private GameManager gm;
     private Vector3 defaultPosition;
     private Vector3 defaultScale;
@@ -16,6 +17,7 @@ public class Object_Cake : MonoBehaviour
         isGameStarted = true;
         counted = false;
         defaultScale = transform.localScale;
+        audiosource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -49,6 +51,7 @@ public class Object_Cake : MonoBehaviour
             other.gameObject.transform.localScale = new Vector3(originalScale.x * 2, originalScale.y * 2, originalScale.z * 2);
             Vector3 originPosition = other.transform.localPosition;
             other.gameObject.transform.localPosition = new Vector3(originPosition.x, originPosition.y, -0.66f);
+            audiosource.Play();
         }
     }
 }

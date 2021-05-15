@@ -22,7 +22,7 @@ public class Object_ReflectMarble : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Vector3 particlepoint = other.contacts[0].point;
-            Instantiate(nodeParticle, new Vector3(particlepoint.x, particlepoint.y, -1f), transform.rotation);
+            Instantiate(nodeParticle, new Vector3(particlepoint.x, particlepoint.y, -1f), nodeParticle.transform.rotation);
 
             Vector3 colpoint = other.transform.position;
 

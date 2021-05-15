@@ -55,7 +55,7 @@ public class Object_BrokenBlock : MonoBehaviour
     
     void OnCollisionEnter(Collision other)
     {
-    Debug.Log("collision");
+    //Debug.Log("collision");
         if (other.gameObject.tag == "Player")
         {
             //Vector3 colpoint = other.transform.position;
@@ -67,17 +67,17 @@ public class Object_BrokenBlock : MonoBehaviour
             if (collisioncheck == 1)
             {
                 gameObject.GetComponent<MeshRenderer>().material.color = Color.yellow;
-                Instantiate(nodeParticleTwo, new Vector3(colpoint.x, colpoint.y, -1f), transform.rotation);
+                Instantiate(nodeParticleTwo, new Vector3(colpoint.x, colpoint.y, -0.2f), nodeParticleTwo.transform.rotation);
             }
             else if (collisioncheck == 2)
             {
                 gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
-                Instantiate(nodeParticleThree, new Vector3(colpoint.x, colpoint.y, -1f), transform.rotation);
+                Instantiate(nodeParticleThree, new Vector3(colpoint.x, colpoint.y, -0.2f), nodeParticleThree.transform.rotation);
             }
             if (collisioncheck > 2)
             {
                 gameObject.GetComponent<BoxCollider>().isTrigger = true; //접촉 시 통과되도록
-                Instantiate(nodeParticleOne, new Vector3(colpoint.x, colpoint.y, -1f), transform.rotation);
+                Instantiate(nodeParticleOne, new Vector3(colpoint.x, colpoint.y, -0.2f), nodeParticleOne.transform.rotation);
                 transform.localScale = new Vector3(0, 0, 0);
                 //gameObject.GetComponent<BoxCollider>().isTrigger = false;
             }

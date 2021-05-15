@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2861510191767262957}
   - component: {fileID: 126827622505077176}
   - component: {fileID: 7871459235243572428}
+  - component: {fileID: -224969203739504475}
   m_Layer: 0
   m_Name: CubeBlockx5
   m_TagString: Untagged
@@ -126,3 +127,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-224969203739504475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612917693114246110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c9f118c4b3d3034cbc4362b66f4085b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

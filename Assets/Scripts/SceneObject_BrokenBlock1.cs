@@ -53,7 +53,7 @@ public class SceneObject_BrokenBlock1 : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        Debug.Log("collision");
+        //Debug.Log("collision");
         if (other.gameObject.tag == "Player")
         {
             collisioncheck++;
@@ -62,12 +62,12 @@ public class SceneObject_BrokenBlock1 : MonoBehaviour
             if (collisioncheck == 1)
             {
                 gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
-                Instantiate(nodeParticleThree, new Vector3(colpoint.x, colpoint.y, -1), transform.rotation);
+                Instantiate(nodeParticleThree, new Vector3(colpoint.x, colpoint.y, -0.2f), nodeParticleThree.transform.rotation);
             }
             else if (collisioncheck > 1)
             {
                 gameObject.GetComponent<BoxCollider>().isTrigger = true; //접촉 시 통과되도록
-                Instantiate(nodeParticleOne, new Vector3(colpoint.x, colpoint.y, -1), transform.rotation);
+                Instantiate(nodeParticleOne, new Vector3(colpoint.x, colpoint.y, -0.2f), nodeParticleOne.transform.rotation);
                 transform.localScale = new Vector3(0, 0, 0);
                 //gameObject.GetComponent<BoxCollider>().isTrigger = false;
             }

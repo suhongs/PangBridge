@@ -11,6 +11,7 @@ public class Object_BrokenBlock : MonoBehaviour
     private GameObject nodeParticleOne;
     private GameObject nodeParticleTwo;
     private GameObject nodeParticleThree;
+    private AudioSource audioSource;
 
     //3회 hit시 사라지는 block
 
@@ -24,6 +25,7 @@ public class Object_BrokenBlock : MonoBehaviour
         nodeParticleOne = Resources.Load("Prefab/Particles/Cube_Collision_Blue") as GameObject;
         nodeParticleTwo = Resources.Load("Prefab/Particles/Cube_Collision_Yellow") as GameObject;
         nodeParticleThree = Resources.Load("Prefab/Particles/Cube_Collision_Red") as GameObject;
+        audioSource = this.gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -60,6 +62,7 @@ public class Object_BrokenBlock : MonoBehaviour
         {
             //Vector3 colpoint = other.transform.position;
             Vector3 colpoint = other.contacts[0].point;
+            this.audioSource.Play();
             //Quaternion colrotation = Quaternion.FromToRotation(-)
 
             collisioncheck++;

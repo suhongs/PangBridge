@@ -6,10 +6,11 @@ public class SceneObject_PortalWithName : MonoBehaviour
 {
     GameObject ResetPortal;
     public bool slowdown = false;
+    private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
-
+        audioSource = this.gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -26,6 +27,7 @@ public class SceneObject_PortalWithName : MonoBehaviour
             ResetPortal = GameObject.Find(this.gameObject.name + "Out");
             if (ResetPortal != null)
             {
+                this.audioSource.Play();
                 rigid.transform.position = new Vector3(ResetPortal.transform.position.x, ResetPortal.transform.position.y, 0f);
                 if(slowdown)
                 {

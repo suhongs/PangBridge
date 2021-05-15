@@ -8,10 +8,11 @@ public class Object_Portal : MonoBehaviour
     //포탈과 1:1 대응 기능? 현재로서는 단 하나의 포탈 출구만이 포탈에 대응됨
     //
     GameObject ResetPortal;
+    private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = this.gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -28,6 +29,7 @@ public class Object_Portal : MonoBehaviour
             ResetPortal = GameObject.Find("PortalOut(Clone)");
             if(ResetPortal != null)
             {
+                this.audioSource.Play();
                 float speed = rigid.velocity.magnitude * 50;
                 Vector3 inNormal = Vector3.Normalize(transform.position - rigid.transform.position);
                 rigid.transform.position = new Vector3(ResetPortal.transform.position.x, ResetPortal.transform.position.y, 0f);

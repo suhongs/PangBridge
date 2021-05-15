@@ -8,6 +8,7 @@ public class SceneObject_BrokenBlock : MonoBehaviour
     private Vector3 defaultPosition;
     private Vector3 defaultScale;
     private bool isGameStarted;
+    private AudioSource audioSource;
 
     //3회 hit시 사라지는 block
 
@@ -17,6 +18,7 @@ public class SceneObject_BrokenBlock : MonoBehaviour
         collisioncheck = 0;
         isGameStarted = true;
         defaultScale = transform.localScale;
+        audioSource = this.gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -51,6 +53,7 @@ public class SceneObject_BrokenBlock : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             collisioncheck++;
+            this.audioSource.Play();
             //collision이 횟수에 따라 파랑->빨강->파괴 순서로 진행
             if (collisioncheck == 1)
             {

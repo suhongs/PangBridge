@@ -4809,6 +4809,7 @@ GameObject:
   - component: {fileID: 209575739860025996}
   - component: {fileID: 584465103775983538}
   - component: {fileID: 4446210247724152430}
+  - component: {fileID: 2265063809470307316}
   m_Layer: 0
   m_Name: Star
   m_TagString: Untagged
@@ -9633,3 +9634,15 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &2265063809470307316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416707182275872876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a75d1f48ef9cf984bbe0d381fc6c70b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

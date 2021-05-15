@@ -5,10 +5,12 @@ using UnityEngine;
 public class Object_ReflectMarble : MonoBehaviour
 {
     private GameObject nodeParticle;
+    private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
         nodeParticle = Resources.Load("Prefab/Particles/Star") as GameObject;
+        audioSource = this.gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -21,6 +23,7 @@ public class Object_ReflectMarble : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            this.audioSource.Play();
             Vector3 particlepoint = other.contacts[0].point;
             Instantiate(nodeParticle, new Vector3(particlepoint.x, particlepoint.y, -1f), nodeParticle.transform.rotation);
 

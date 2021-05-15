@@ -1500,23 +1500,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slowdown: 0
---- !u!1 &281082217 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1775574213220900074, guid: 4bda4af68920ce344aa2ae37a80e3fbe, type: 3}
-  m_PrefabInstance: {fileID: 1835671267}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &281082223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 281082217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c9f118c4b3d3034cbc4362b66f4085b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &283873784
 GameObject:
   m_ObjectHideFlags: 0
@@ -1866,6 +1849,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CubeBlockx7 u2
       objectReference: {fileID: 0}
+    - target: {fileID: 7189835028235790847, guid: 4bda4af68920ce344aa2ae37a80e3fbe, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7464172588722207929, guid: 4bda4af68920ce344aa2ae37a80e3fbe, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2161,7 +2148,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 9.000803, y: -0.000061035156}
+  m_AnchoredPosition: {x: 9.000841, y: -0.000061035156}
   m_SizeDelta: {x: -9.000916, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!1001 &388990696
@@ -3345,6 +3332,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CubeBlockx7 d
       objectReference: {fileID: 0}
+    - target: {fileID: 7189835028235790847, guid: 4bda4af68920ce344aa2ae37a80e3fbe, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7464172588722207929, guid: 4bda4af68920ce344aa2ae37a80e3fbe, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -4120,7 +4111,7 @@ MonoBehaviour:
   StageText: {fileID: 1776255889}
   currentStage: 8
   ResetPoint: {fileID: 1301591377}
-  startCoin: 50
+  startCoin: 80
   currentCoin: 0
   CurrentCoinText: {fileID: 1446950474}
   maxStar: 3
@@ -4596,23 +4587,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 824815971}
   m_CullTransparentMesh: 0
---- !u!1 &833530800 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1775574213220900074, guid: 4bda4af68920ce344aa2ae37a80e3fbe, type: 3}
-  m_PrefabInstance: {fileID: 361202824}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &833530806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 833530800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c9f118c4b3d3034cbc4362b66f4085b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &834426188
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6283,53 +6257,45 @@ MonoBehaviour:
   buttonTemplate: {fileID: 1535234533}
   content: {fileID: 377415122}
   allTools:
-  - name: Block
-    prefab_name: Blockx3
+  - name: CubeBlock x 3
+    prefab_name: CubeBlockx3
+    cost: 3
+    image: {fileID: 0}
+  - name: CubeBlock x 7
+    prefab_name: CubeBlockx5
+    cost: 5
+    image: {fileID: 0}
+  - name: CubeBlock x 7
+    prefab_name: CubeBlockx7
+    cost: 7
+    image: {fileID: 0}
+  - name: BounceBlock
+    prefab_name: BounceBlock
+    cost: 5
+    image: {fileID: 0}
+  - name: CushionBlock
+    prefab_name: CushionBlock
     cost: 5
     image: {fileID: 0}
   - name: Magnet
-    prefab_name: MagneticSphere
+    prefab_name: magnet
     cost: 10
     image: {fileID: 0}
-  - name: NoteDo
-    prefab_name: NoteDo
-    cost: 1
-    image: {fileID: 0}
-  - name: NoteRe
-    prefab_name: NoteRe
-    cost: 1
-    image: {fileID: 0}
-  - name: Portal
-    prefab_name: Portal
-    cost: 1
-    image: {fileID: 0}
-  - name: PortalExit
-    prefab_name: PortalOut
-    cost: 1
-    image: {fileID: 0}
-  - name: Cannon
-    prefab_name: Cannon
-    cost: 1
-    image: {fileID: 0}
-  - name: Rubber
-    prefab_name: Rubber
-    cost: 1
-    image: {fileID: 0}
-  - name: Balloon
-    prefab_name: Balloon
-    cost: 1
-    image: {fileID: 0}
-  - name: Trampoline
-    prefab_name: Trampoline
-    cost: 5
-    image: {fileID: 0}
-  - name: ReflectMarble
-    prefab_name: ReflectMarble
-    cost: 5
-    image: {fileID: 0}
-  - name: Windzone
+  - name: WindZone
     prefab_name: WindZone
+    cost: 10
+    image: {fileID: 0}
+  - name: Spin Block (Single)
+    prefab_name: jointsmall
     cost: 5
+    image: {fileID: 0}
+  - name: Spin Block (Controllable)
+    prefab_name: jointtestsmall
+    cost: 15
+    image: {fileID: 0}
+  - name: RubberBall
+    prefab_name: ReflectMarble
+    cost: 10
     image: {fileID: 0}
 --- !u!95 &1035058275
 Animator:
@@ -7342,23 +7308,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bda4af68920ce344aa2ae37a80e3fbe, type: 3}
---- !u!1 &1161475897 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1775574213220900074, guid: 4bda4af68920ce344aa2ae37a80e3fbe, type: 3}
-  m_PrefabInstance: {fileID: 1290417643}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1161475903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1161475897}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c9f118c4b3d3034cbc4362b66f4085b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1162844017
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8460,6 +8409,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CubeBlockx7 l
       objectReference: {fileID: 0}
+    - target: {fileID: 7189835028235790847, guid: 4bda4af68920ce344aa2ae37a80e3fbe, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7464172588722207929, guid: 4bda4af68920ce344aa2ae37a80e3fbe, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -9444,7 +9397,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 50$
+  m_text: 80$
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bbd7f5d0e41b3f847afa247948440c19, type: 2}
   m_sharedMaterial: {fileID: -7889527800407069529, guid: bbd7f5d0e41b3f847afa247948440c19, type: 2}
@@ -11731,23 +11684,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 6442435203333847306, guid: bc91331c24db70344b59b220bc8187b2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bc91331c24db70344b59b220bc8187b2, type: 3}
---- !u!1 &1757408122 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1775574213220900074, guid: 4bda4af68920ce344aa2ae37a80e3fbe, type: 3}
-  m_PrefabInstance: {fileID: 636209406}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1757408128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1757408122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c9f118c4b3d3034cbc4362b66f4085b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1759948423
 GameObject:
   m_ObjectHideFlags: 0
@@ -11851,7 +11787,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: STAGE 3
+  m_text: STAGE 8
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bbd7f5d0e41b3f847afa247948440c19, type: 2}
   m_sharedMaterial: {fileID: -7889527800407069529, guid: bbd7f5d0e41b3f847afa247948440c19, type: 2}
@@ -12261,6 +12197,10 @@ PrefabInstance:
     - target: {fileID: 1775574213220900074, guid: 4bda4af68920ce344aa2ae37a80e3fbe, type: 3}
       propertyPath: m_Name
       value: CubeBlockx7 u
+      objectReference: {fileID: 0}
+    - target: {fileID: 7189835028235790847, guid: 4bda4af68920ce344aa2ae37a80e3fbe, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7464172588722207929, guid: 4bda4af68920ce344aa2ae37a80e3fbe, type: 3}
       propertyPath: m_RootOrder

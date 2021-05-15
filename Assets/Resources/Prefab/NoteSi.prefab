@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 312ec1eb78f8aae45b83b5495888da8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodeParticle: {fileID: 2282353044796925649, guid: 29f1651cdc9e9b9409ef2e809e90873d, type: 3}
+  nodeParticle: {fileID: 2367021136080936163, guid: e384a4e389842bc4cbb1fac2ba26e188, type: 3}
 --- !u!1 &1973936639955263173
 GameObject:
   m_ObjectHideFlags: 0

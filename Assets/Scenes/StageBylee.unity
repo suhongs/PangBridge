@@ -2965,7 +2965,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 9.000848, y: -0.000061035156}
+  m_AnchoredPosition: {x: -0.000027656555, y: -0.000061035156}
   m_SizeDelta: {x: -9.000916, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &564901671
@@ -8797,61 +8797,49 @@ MonoBehaviour:
   buttonTemplate: {fileID: 2015712873}
   content: {fileID: 564901669}
   allTools:
-  - name: Block
-    prefab_name: Blockx3
+  - name: CubeBlock x 3
+    prefab_name: CubeBlockx3
+    cost: 3
+    image: {fileID: 0}
+  - name: CubeBlock x 5
+    prefab_name: CubeBlockx5
     cost: 5
     image: {fileID: 0}
+  - name: CubeBlock x 7
+    prefab_name: CubeBlockx7
+    cost: 7
+    image: {fileID: 0}
+  - name: BounceBlock
+    prefab_name: BounceBlock
+    cost: 5
+    image: {fileID: 0}
+  - name: WindZone
+    prefab_name: WindZone
+    cost: 10
+    image: {fileID: 0}
   - name: Magnet
-    prefab_name: MagneticSphere
+    prefab_name: magnet
+    cost: 10
+    image: {fileID: 0}
+  - name: Spin Block
+    prefab_name: joint
+    cost: 5
+    image: {fileID: 0}
+  - name: Spin Block (Controllable)
+    prefab_name: jointtest
+    cost: 15
+    image: {fileID: 0}
+  - name: RubbeBall
+    prefab_name: ReflectMarble
+    cost: 10
+    image: {fileID: 0}
+  - name: Trampoline
+    prefab_name: Trampoline
     cost: 10
     image: {fileID: 0}
   - name: NoteDo
     prefab_name: NoteDo
-    cost: 1
-    image: {fileID: 0}
-  - name: NoteRe
-    prefab_name: NoteRe
-    cost: 1
-    image: {fileID: 0}
-  - name: Portal
-    prefab_name: Portal
-    cost: 1
-    image: {fileID: 0}
-  - name: PortalExit
-    prefab_name: PortalOut
-    cost: 1
-    image: {fileID: 0}
-  - name: Cannon
-    prefab_name: Cannon
-    cost: 1
-    image: {fileID: 0}
-  - name: Rubber
-    prefab_name: Rubber
-    cost: 1
-    image: {fileID: 0}
-  - name: Balloon
-    prefab_name: Balloon
-    cost: 1
-    image: {fileID: 0}
-  - name: BounceBlock
-    prefab_name: BounceBlock
-    cost: 1
-    image: {fileID: 0}
-  - name: CushionBlock
-    prefab_name: CushionBlock
-    cost: 1
-    image: {fileID: 0}
-  - name: WindZone
-    prefab_name: WindZone
-    cost: 1
-    image: {fileID: 0}
-  - name: ReflectMarble
-    prefab_name: ReflectMarble
-    cost: 1
-    image: {fileID: 0}
-  - name: Joint
-    prefab_name: jointtest
-    cost: 1
+    cost: 0
     image: {fileID: 0}
 --- !u!1 &1768315444 stripped
 GameObject:

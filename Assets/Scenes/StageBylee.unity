@@ -2965,7 +2965,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000027656555, y: -0.000061035156}
+  m_AnchoredPosition: {x: 9.000808, y: -0.000061035156}
   m_SizeDelta: {x: -9.000916, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &564901671
@@ -8839,6 +8839,34 @@ MonoBehaviour:
     image: {fileID: 0}
   - name: NoteDo
     prefab_name: NoteDo
+    cost: 0
+    image: {fileID: 0}
+  - name: NoteRe
+    prefab_name: NoteRe
+    cost: 0
+    image: {fileID: 0}
+  - name: NoteMi
+    prefab_name: NoteMi
+    cost: 0
+    image: {fileID: 0}
+  - name: NotePa
+    prefab_name: NotePa
+    cost: 0
+    image: {fileID: 0}
+  - name: NoteSol
+    prefab_name: NoteSol
+    cost: 0
+    image: {fileID: 0}
+  - name: NoteLa
+    prefab_name: NoteLa
+    cost: 0
+    image: {fileID: 0}
+  - name: NoteSi
+    prefab_name: NoteSi
+    cost: 0
+    image: {fileID: 0}
+  - name: NoteHighDo
+    prefab_name: NoteHighDo
     cost: 0
     image: {fileID: 0}
 --- !u!1 &1768315444 stripped

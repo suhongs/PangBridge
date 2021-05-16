@@ -10,6 +10,8 @@ public class Object_Cannon : MonoBehaviour
     [SerializeField] GameObject CannonDir = null;
     private GameObject player = null;
     private GameObject effectpos;
+    public GameObject sound;
+    private AudioSource audio2;
     
     [SerializeField]
     GameObject shootEffect;
@@ -24,6 +26,7 @@ public class Object_Cannon : MonoBehaviour
         cam = Camera.main;
         boxColliderSize = GetComponent<BoxCollider>().size;
         audiosource = GetComponent<AudioSource>();
+        audio2 = sound.GetComponent<AudioSource>();
         effectpos = transform.GetChild(1).gameObject;
     }
     private void Update()
@@ -47,7 +50,8 @@ public class Object_Cannon : MonoBehaviour
                     gm.isCannon = false;
 
                     StartCoroutine("AddEffect");
-                    Instantiate(shootEffect, effectpos.transform.position, Quaternion.identity);
+                    Instantiate(shootEffect, player.transform.position, Quaternion.identity);
+                    audio2.Play();
                 }
             }
         }

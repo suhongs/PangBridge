@@ -22,8 +22,9 @@ public class SceneChange : MonoBehaviour
         if (level_s == "5") level = 5;
         if (level_s == "6") level = 6;
         if (level_s == "7") level = 7;
-        //if (level_s == "8") level = 8;
-        //if (level_s == "9") level = 9;
+        if (level_s == "8") level = 8;
+        if (level_s == "9") level = 9;
+        if (level_s == "10") level = 10;
         FadeToLevel(level + 1);
     }
 

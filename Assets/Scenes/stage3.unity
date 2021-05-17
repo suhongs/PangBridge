@@ -3225,11 +3225,11 @@ MonoBehaviour:
   content: {fileID: 377415122}
   allTools:
   - name: Block
-    prefab_name: Blockx3
-    cost: 5
+    prefab_name: CubeBlockx3
+    cost: 3
     image: {fileID: 0}
   - name: Magnet
-    prefab_name: MagneticSphere
+    prefab_name: magnet
     cost: 10
     image: {fileID: 0}
   - name: NoteDo
@@ -3240,17 +3240,17 @@ MonoBehaviour:
     prefab_name: NoteRe
     cost: 1
     image: {fileID: 0}
-  - name: Portal
-    prefab_name: Portal
-    cost: 1
+  - name: Wind Zone
+    prefab_name: WindZone
+    cost: 10
     image: {fileID: 0}
-  - name: PortalExit
-    prefab_name: PortalOut
-    cost: 1
+  - name: Trampoline
+    prefab_name: Trampoline
+    cost: 5
     image: {fileID: 0}
   - name: Cannon
     prefab_name: Cannon
-    cost: 1
+    cost: 10
     image: {fileID: 0}
   - name: Rubber
     prefab_name: Rubber
@@ -3259,10 +3259,6 @@ MonoBehaviour:
   - name: Balloon
     prefab_name: Balloon
     cost: 1
-    image: {fileID: 0}
-  - name: Trampoline
-    prefab_name: Trampoline
-    cost: 5
     image: {fileID: 0}
 --- !u!95 &1035058275
 Animator:

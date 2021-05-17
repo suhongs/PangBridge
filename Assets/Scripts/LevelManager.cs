@@ -30,10 +30,11 @@ public class LevelManager : MonoBehaviour
             else
             {
                 LevelScore[i] = -1;
+                PlayerPrefs.SetInt("stage" + stage, -1);
             }
         }
         if (LevelScore[0] == -1) LevelScore[0] = 0;
-        
+        PlayerPrefs.Save();
 
 
         for (int i=0; i < LevelScore.Length; i++)

@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
             if(!PlayerPrefs.HasKey("stage" + currentStage) || PlayerPrefs.GetInt("stage"+ currentStage) < currentStar)
             {
                 PlayerPrefs.SetInt("stage" + currentStage, currentStar);
-                if(PlayerPrefs.GetInt("stage"+currentStage+1) == -1)
+                if(PlayerPrefs.GetInt("stage"+(currentStage+1)) == -1)
                     PlayerPrefs.SetInt("stage" + (currentStage + 1), 0);
                 PlayerPrefs.Save();
             }

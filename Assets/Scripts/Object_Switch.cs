@@ -24,6 +24,7 @@ public class Object_Switch : MonoBehaviour
     void Start()
     {
         audiosource = GetComponent<AudioSource>();
+        rb = GetComponent<Rigidbody>();
         isPressed = false;
         isGameStarted = true;
         defaultScale = transform.localScale;
@@ -62,6 +63,9 @@ originPos1 = transform.GetChild(0).position;
                 //transform.localScale = defaultScale;
                 panel.transform.position = paneldefaultPosition;
                 panel.transform.localScale = paneldefaultScale;
+                
+                if(panel != null)
+                    Instantiate(panel, paneldefaultPosition, Quaternion.identity);
                 isGameStarted = true;
                 rb.isKinematic = false;
                 if (panel.activeSelf == false)
